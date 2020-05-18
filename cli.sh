@@ -67,6 +67,12 @@ while [[ -d "${cmd_file}" && $arg_start -le $# ]]; do
   fi 
 done
 
+# prints out the version of the CLI in use
+if [[ "${!arg_start}" == "version" ]]; then
+  say "${CLI_VERSION}"
+  exit 3
+fi
+
 # place the arguments for the command in their own list to make them easier 
 # to work with
 cmd_args=("${@:arg_start}")
