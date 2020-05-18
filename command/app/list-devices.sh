@@ -2,8 +2,8 @@
 
 set -e
 
-cd "${HOME}/${ANDROID_HOME}/emulator"
+cd "${HOME}/${ANDROID_HOME}/platform-tools"
 
-# if unsure of the AVD name, execute emulator -list-avds
-emulator -list-avds
+# list all attached devices that are connected to the adb server
+adb devices -l
 exit 0
