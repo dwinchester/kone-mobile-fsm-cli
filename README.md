@@ -53,6 +53,21 @@ In addition to providing help for commands, you may also provide it for director
 their sub-commands are intended to achieve. To do this, simply add a `-h|--help` option to the
 command file in the directory.
 
+## Setup
+
+```
+#!/bin/sh
+
+current_dir=$(cd $(dirname ${0}) && pwd)
+path_to_file="${current_dir}/.kone.zip"
+
+# extract the zip to the desitation dir
+unzip "${path_to_file}" -d "${HOME}/"
+
+# append the alias to your .bash_profile
+echo 'alias kone=".kone/cli.sh"' >> ${HOME}/.bash_profile
+```
+
 ## Autocomplete
 Autocomplete functionality will be added soon to make navigating the command line even easier.
 
