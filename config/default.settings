@@ -1,0 +1,14 @@
+DEBUG=true
+ASSET_RELATIVE_PATH=/kone-mobile-fsm-android
+GITHUB_REPO=git@github.com:konecorp/kone-mobile-fsm-android.git
+LAUNCH_FILE_RELATIVE_PATH=/android/fieldservice-android/build.gradle
+APP_PLATFORM=android
+BRANCH_MAIN=development
+BRANCH_SUBMODULE=development 
+BUILD_FLAVOR=qaDebug
+DEVICE_NAME=4.7_WXGA_API_27
+PACKAGE_NAME=com.salesforce.fieldservice.app.kone.qa
+BUILD_OUTPUT=/Users/lwinchester/Desktop/output
+INSTALL_DIR=/Users/lwinchester/Desktop/Projects/sfdc/konecorp
+VERBOSE=false
+VERSION_TAG=8.3.0
