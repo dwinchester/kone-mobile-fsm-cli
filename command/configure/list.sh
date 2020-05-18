@@ -12,7 +12,14 @@ show_help() {
   echo "  -h, --help              Show command line help."  
   echo "  --profile <PROFILE>     Specifies the named profile to use for this command."   
   echo ""
+  echo "Examples:"
+  echo "  kone configure list --help"
+  echo "  kone configure list"
+  echo "  kone configure list --profile ios"
+  echo "" 
 }
+
+profile="default"
 
 while [ $# -ne 0 ]
 do
@@ -36,9 +43,14 @@ do
   shift
 done
 
-# if the path to the named profile does not exist, then we will show the content
-# of the default profile from the CLI settings
-config_file="$(resolve_profile_path ${profile})"
+config_file="${ROOT_DIR}/config/${profile}.settings"
+
+if [ ! -f "${config_file}" ]; then
+  say_warning "Profile '${profile}' not found."
+  exit 0
+fi
+
+say "Showing content for profile '${profile}'."
 
 cat "${config_file}"
 exit 0

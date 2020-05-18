@@ -13,16 +13,14 @@ show_help() {
   echo "  --variable <VARNAME>      The name of the config value to set."
   echo "  --value <CONFIG_VALUE>    The value to set."
   echo "  --profile <PROFILE>       Specifies the named profile to use for this command."   
+  echo ""
+  echo "Examples:"
+  echo "  kone configure set --help"
+  echo "  kone configure set --variable VERSION_TAG --value 1.2.3"
   echo "" 
 }
 
-set_config() {
-  eval $invocation
-
-  sed -i '' "s/\($(to_upper $1) *= *\).*/\1$2/" "${config_file}"
-
-  return 0
-}
+profile="default"
 
 while [ $# -ne 0 ]
 do
@@ -54,9 +52,22 @@ do
   shift
 done
 
-config_file="$(resolve_profile_path ${profile})"
-source "${config_file}"
+config_file="${ROOT_DIR}/config/${profile}.settings"
 
-set_config "${varname}" "${value}"
-say "${green:-}SUCCESS${normal:-}"
+if [ ! -f "${config_file}" ]; then
+  say_warning "Profile '${profile}' not found."
+  say "Using default profile: ${blue:-}\`${DEFAULT_PROFILE}\`${normal:-}"
+
+  config_file="${ROOT_DIR}/${DEFAULT_PROFILE}"
+fi
+
+# make sure that both the varname and value options include valid params
+if [ -z "${varname}" ] || [ -z "${value}" ]; then
+  # exit because we need both options, otherwise, a blank value is set
+  say_err "Cannot update config settings. Both variable and value options are required. Exiting with code 1."; 
+  exit 1;
+fi
+
+set_config "${varname}" "${value}" "${config_file}"
+say "${green:-}Success${normal:-} Saved settings file."
 exit 0

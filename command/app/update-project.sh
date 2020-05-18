@@ -3,8 +3,7 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-project_path="$(get_project_path)"
-cd "${project_path}"
+cd "$(get_project_path)"
 
 # switch branches (or restore working tree files), and then fetch from and 
 # integrate all changes from the remote repository
@@ -16,5 +15,5 @@ cd "android/React" # update the submodule
 git checkout "${BRANCH_SUBMODULE}"
 git pull
 
-say "${green:-}SUCCESS${normal:-}"
+say "${green:-}Success${normal:-} Project update completed."
 exit 0

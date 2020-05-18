@@ -130,5 +130,5 @@ fi
 
 install_app
 
-say "${green:-}SUCCESS${normal:-}"
+say "${green:-}Success${normal:-} Project clone completed."
 exit 0

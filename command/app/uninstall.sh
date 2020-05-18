@@ -3,13 +3,6 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-is_app_installed() {
-  if adb shell pm list packages | grep ${PACKAGE_NAME}; then
-    return 0
-  fi
-  return 1
-}
-
 device="${DEVICE_NAME}"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"

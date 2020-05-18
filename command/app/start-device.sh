@@ -19,8 +19,7 @@ fi
 avds=( $(emulator -list-avds 2>&1 ) )
 
 # display list of emulators
-echo "Available Emulators
-----------------------------------------"
+echo "Available emulators"
 N=1
 for avd in ${avds[@]}
 do

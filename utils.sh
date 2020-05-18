@@ -153,35 +153,6 @@ combine_paths() {
   return 0
 }
 
-file_exists() {
-  eval $invocation
-
-  file="${1}"
-
-  if [ -f "${file}" ]; then
-    return 0
-  fi
-  return 1
-}
-
-resolve_profile_path() {
-  eval $invocation
-
-  local config_file="$(combine_paths ${ROOT_DIR} $(combine_paths "config/" ${1}.settings))"
-
-  # does the named profile exist
-  if file_exists "${config_file}"; then
-    say_verbose "resolve_profile_path: config_file=${config_file}"
-    echo "${config_file}"
-    return 0
-  fi
-
-  # use the default profile
-  local default_config_file="$(combine_paths ${ROOT_DIR} ${DEFAULT_PROFILE})";
-  echo "${default_config_file}"
-  return 0
-}
-
 resolve_installation_path() {
   eval $invocation
 
@@ -245,7 +216,20 @@ get_launch_file() {
   return 0
 }
 
+is_app_installed() {
+  if adb shell pm list packages | grep ${PACKAGE_NAME}; then
+    return 0
+  fi
+  return 1
+}
 
+set_config() {
+  eval $invocation
+
+  sed -i '' "s/\($(to_upper $1) *= *\).*/\1$2/" "${3}"
+
+  return 0
+}
 
 
 

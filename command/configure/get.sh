@@ -13,19 +13,14 @@ show_help() {
   echo "  --profile <PROFILE>       Specifies the named profile to use for this command."   
   echo "  --variable <VARNAME>      The name of the config value to retrieve."
   echo ""
+  echo "Examples:"
+  echo "  kone configure get --help"
+  echo "  kone configure get --variable VERSION_TAG"
+  echo "  kone configure get --variable PACKAGE_NAME --profile ios"
+  echo "" 
 }
 
-is_not_empty() {
-  eval $invocation
-
-  local input="${1}"
-
-  if [ -z "${input}" ]; then
-    say_err "Variable value cannot be blank.\nPlease see the project wiki for supported options: https://github.com/konecorp/kone-mobile-fsm-android/wiki/CLI:-configure-get-command."
-    exit 1
-  fi
-  return 0
-}
+profile="default"
 
 while [ $# -ne 0 ]
 do
@@ -53,9 +48,20 @@ do
   shift
 done
 
-is_not_empty "${varname}"
+config_file="${ROOT_DIR}/config/${profile}.settings"
 
-config_file="$(resolve_profile_path ${profile})"
+if [ ! -f "${config_file}" ]; then
+  say_warning "Profile '${profile}' not found."
+  say "Using default profile: ${blue:-}\`${DEFAULT_PROFILE}\`${normal:-}"
+
+  config_file="${ROOT_DIR}/${DEFAULT_PROFILE}"
+fi
+
+if [ -z "${varname}" ]; then
+  say_err "Variable value cannot be blank.\nPlease see the project wiki for supported options: https://github.com/konecorp/kone-mobile-fsm-android/wiki/CLI:-configure-get-command."
+  exit 1
+fi
+
 source "${config_file}"
 
 say "${!varname}"

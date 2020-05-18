@@ -4,7 +4,7 @@ set -e
 . "${ROOT_DIR}/utils.sh"
 
 device="${DEVICE_NAME}"
-reinstall_param=""
+dynamic_params=""
 
 while [ $# -ne 0 ]
 do
@@ -13,7 +13,7 @@ do
     -h|--help|help)
       echo ""
       echo "Description: Installs a package to a device."
-      echo "Usage: kone app install [options]"
+      echo "Usage: kone app install [options] [[--] <additional arguments>]]"
       echo ""
       echo "Options:"
       echo "  -h, --help      Show command line help."     
@@ -34,7 +34,7 @@ do
       device="${1}"
       ;; 
     -r|--reinstall)
-      reinstall_param+="-r"
+      dynamic_params+=" -r"
       ;;
     *)
       say_err "$(unknown_command_message "${key}")"
@@ -53,5 +53,5 @@ say "Installing KONE FSM app to device ID: ${device}"
 
 # if the APK is built using a developer preview SDK, you must include the 
 # -t option with the install command to install a test APK
-adb -s "${device}" install "${reinstall_param}" "${apk_path}/FieldService-App-qa-release.apk"
+adb -s "${device}" install "${dynamic_params}" "${apk_path}/FieldService-App-qa-release.apk"
 exit 0
