@@ -3,13 +3,55 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
+device="${DEVICE_NAME}"
+reinstall_param=""
+
+while [ $# -ne 0 ]
+do
+  key="${1}" 
+  case "${key}" in
+    -h|--help|help)
+      echo ""
+      echo "Description: Installs a package to a device."
+      echo "Usage: kone app install [options]"
+      echo ""
+      echo "Options:"
+      echo "  -h, --help      Show command line help."     
+      echo "  --device        The device ID from the output of kone app list-devices command."
+      echo "  --reinstall     Reinstall an existing app, keeping its data." 
+      echo ""
+      echo "Examples:"
+      echo "  kone app install"      
+      echo "  kone app install --device ZY32298W3J"
+      echo "  kone app install --device ZY32298W3J --reinstall"
+      echo ""
+      exit 3
+      ;;
+    install)
+      ;;
+    -d|--device)
+      shift
+      device="${1}"
+      ;; 
+    -r|--reinstall)
+      reinstall_param+="-r"
+      ;;
+    *)
+      say_err "$(unknown_command_message "${key}")"
+      exit 3
+      ;;
+  esac
+  shift
+done
+
 output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/qa/release"
 apk_path="$(combine_paths $(get_project_path) ${output_dir})"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
-say "Installing KONE FSM app"
+
+say "Installing KONE FSM app to device ID: ${device}"
 
 # if the APK is built using a developer preview SDK, you must include the 
 # -t option with the install command to install a test APK
-adb install "${apk_path}/FieldService-App-qa-release.apk"
+adb -s "${device}" install "${reinstall_param}" "${apk_path}/FieldService-App-qa-release.apk"
 exit 0
