@@ -1,4 +1,4 @@
-DEBUG=true
+DEBUG=false
 ASSET_RELATIVE_PATH=/kone-mobile-fsm-android
 GITHUB_REPO=git@github.com:konecorp/kone-mobile-fsm-android.git
 LAUNCH_FILE_RELATIVE_PATH=/android/fieldservice-android/build.gradle
