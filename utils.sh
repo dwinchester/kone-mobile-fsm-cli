@@ -53,7 +53,7 @@ say_verbose() {
 debug() {
   if [ "${DEBUG}" = true ]; then
     local now="$(date +"%Y%m%d%I%M")"
-    local log="${ROOT_DIR}/log/cli-debug-${now}.log" # output: release-202004240958.log
+    local log="${ROOT_DIR}/log/android-debug-${now}.log" # output: release-202004240958.log
 
     printf 'Log File - ' > "${log}"
     
@@ -217,7 +217,9 @@ is_app_installed() {
 set_config() {
   eval $invocation
 
-  sed -i '' "s/\($(to_upper $1) *= *\).*/\1$2/" "${3}"
+  value_esc=$( echo $2 | sed 's_/_\\/_g' )
+
+  sed -i '' "s/\($(to_upper $1) *= *\).*/\1$value_esc/" "${3}"
 
   return 0
 }
