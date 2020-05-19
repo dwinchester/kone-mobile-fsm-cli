@@ -21,5 +21,5 @@ if [[ $# -gt 1 ]]; then
   rm -rf "${cmd_dir}"
 fi
 
-say "${green:-}SUCCESS${normal:-}"
+say "${green:-}Success${normal:-} Command has been deleted."
 exit 0

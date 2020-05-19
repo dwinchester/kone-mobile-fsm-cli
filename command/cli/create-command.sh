@@ -30,5 +30,5 @@ fi
 
 chmod -R 775 "${HOME}/.kone/" # update execute permissions
 
-say "${green:-}SUCCESS${normal:-}"
+say "${green:-}Success${normal:-} New command created."
 exit 0

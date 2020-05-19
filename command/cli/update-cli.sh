@@ -5,20 +5,17 @@ set -e
 
 cd "${ROOT_DIR}"
 
-upstream=${1:-'@{u}'}
-local=$(git rev-parse @)
-remote=$(git rev-parse "${upstream}")
-base=$(git merge-base @ "${upstream}")
+changed=0
+message=""
 
-if [ "${local}" = "${remote}" ]; then
-  say "Up-to-date"
-elif [ "${local}" = "${base}" ]; then
-  say "Need to pull"
-elif [ "${remote}" = "${base}" ]; then
-  say "Need to push"
+git remote update && git status -uno | grep -q 'Your branch is behind.' && changed=1
+
+if [ {${changed}} = 1 ]; then
+  git pull
+  message="CLI updated successfully";
 else
-  say "Diverged"
+  message="CLI up-to-date"
 fi
 
-# git pull
+say "${green:-}Success${normal:-} ${message}."
 exit 0
