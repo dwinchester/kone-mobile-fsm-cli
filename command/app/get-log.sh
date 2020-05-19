@@ -24,9 +24,8 @@ device="${DEVICE_ID}"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
 
+# the name of the file that logs are written to; e.g. android-debug-202005191027.log
 now="$( date +"%Y%m%d%I%M" )"
-
-# the name of the file that logs are written to, e.g. android-debug-202005191027.log
 log_file_name="android-debug-${now}.log"
 
 # the directory that log files are written to. If set to 'auto', then the location
@@ -42,26 +41,6 @@ fi
 
 log_file_path="$( combine_paths ${logs_dir} ${log_file_name} )"
 
-# clean previous logs
-
-# adb logcat -v threadtime "${device}" > "${log_file_path}"
-${ROOT_DIR}/coloredlogcat.py
-
-# logcat() {
-#   if [ -z "$1" ]; then
-#     say_err "Process Id argument missing."; return
-#   fi
-#   pid_filter="\b$1\b"
-#   pid=$(adb shell ps | egrep $pid_filter | cut -c10-15)
-
-#   if [ -z "${pid}" ]; then
-#     say_err "Process $1 is not running."; return
-#   fi
-#   adb logcat | grep $pid
-# }
-
-# logcat "${PACKAGE_NAME}"
-
-# adb logcat -v brief | grep -e "${PACKAGE_NAME}"
+adb logcat -v brief | grep -e "${PACKAGE_NAME}" > "${log_file_path}"
 
 exit 0
