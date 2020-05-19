@@ -3,7 +3,7 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-device="${DEVICE_NAME}"
+device="${DEVICE_ID}"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
 

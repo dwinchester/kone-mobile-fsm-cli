@@ -3,7 +3,7 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-device="${DEVICE_NAME}"
+device="${DEVICE_ID}"
 dynamic_params=""
 
 while [ $# -ne 0 ]

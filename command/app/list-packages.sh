@@ -10,7 +10,7 @@ show_help() {
   echo ""
   echo "Options:"
   echo "  -h, --help                Show command line help."  
-  echo "  --device <DEVICE_NAME>    The name of the device."   
+  echo "  --device <DEVICE_ID>    The name of the device."   
   echo "  --third-party             Print only 3rd party (or non-system) packages."
   echo ""
   echo "Examples:"
@@ -21,7 +21,7 @@ show_help() {
   echo "" 
 }
 
-device="${DEVICE_NAME}"
+device="${DEVICE_ID}"
 dynamic_params=""
 
 while [ $# -ne 0 ]
@@ -53,5 +53,5 @@ cd "${HOME}/${ANDROID_HOME}/platform-tools"
 
 echo "List of packages"
 
-adb -s "${DEVICE_NAME}" shell pm list packages "${dynamic_params}"
+adb -s "${DEVICE_ID}" shell pm list packages "${dynamic_params}"
 exit 0
