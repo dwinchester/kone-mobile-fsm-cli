@@ -14,7 +14,7 @@ kone help
 
 kone app get-project --no-dependencies
 
-kone app build --output /build_output
+kone app get-log --log-output /Users/yourusername/Desktop
 
 kone app start-device
 

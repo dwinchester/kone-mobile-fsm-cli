@@ -53,7 +53,7 @@ say_verbose() {
 debug() {
   if [ "${DEBUG}" = true ]; then
     local now="$(date +"%Y%m%d%I%M")"
-    local log="${ROOT_DIR}/log/release-${now}.log" # output: release-202004240958.log
+    local log="${ROOT_DIR}/log/cli-debug-${now}.log" # output: release-202004240958.log
 
     printf 'Log File - ' > "${log}"
     
@@ -74,15 +74,6 @@ machine_has() {
 
   hash "${1}" > /dev/null 2>&1
   return $?
-}
-
-list_folders() {
-  eval $invocation
-
-  # find all folders in the the current folder recursively and do not return hidden files.
-  # remove the prepended ./ from the result list
-  find . -maxdepth 1 -type d -not -path '*/\.*' | sed 's/^\.\///g' | sort
-  return 0
 }
 
 check_min_reqs(){
@@ -158,7 +149,7 @@ resolve_installation_path() {
 
   local install_dir="$(to_lowercase "${1}")"
 
-  if [ "${install_dir}" = "<auto>" ]; then
+  if [ "${install_dir}" = "auto" ]; then
     local default_install_dir="$HOME/Library/Kone"
     say_verbose "resolve_installation_path: default_install_dir=${default_install_dir}"
     echo "${default_install_dir}"
