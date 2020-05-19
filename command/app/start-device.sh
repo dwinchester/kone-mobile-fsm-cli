@@ -6,6 +6,12 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
+help_arg=2
+if [ "${!help_arg}" == "help" ]; then
+  say "Usage: kone app start-device"  
+  exit 3
+fi
+
 # go to the emulator directory
 cd "${HOME}/${ANDROID_HOME}/emulator"
 
@@ -37,7 +43,7 @@ if [ $num -lt $N ] && [ $num -gt 0 ]; then
   emulator "@$avd" > /dev/null 2>&1 &
   exit 0
 else
-  say_err "Invalid entry : $num"
+  say_err "Invalid entry : ${num}"
   exit 1
 fi
 exit 0
