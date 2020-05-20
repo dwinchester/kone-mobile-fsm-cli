@@ -3,7 +3,8 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-cd "$(get_project_path)"
+project_path="$(get_project_path)"
+cd "${project_path}"
 
 # switch branches (or restore working tree files), and then fetch from and 
 # integrate all changes from the remote repository

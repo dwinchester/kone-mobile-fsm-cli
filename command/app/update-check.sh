@@ -3,7 +3,8 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-cd "$(get_project_path)"
+project_path="$(get_project_path)"
+cd "${project_path}"
 
 # list of all remote repositories that are currently connected to your local 
 # repository and check for updates
