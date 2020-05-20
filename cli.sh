@@ -32,7 +32,7 @@ if [ $# == 0 ]; then
   echo ""  
   echo "Welcome to the KONE FSM Mobile app CLI"
   echo "---------------------------"
-  echo "CLI Version ${cli_version}"
+  echo "CLI Version ${CLI_VERSION}"
   echo ""
   echo "Use 'kone --help' to see available options and commands or visit the project wiki."
   echo "Report issues and find source on GitHub: https://github.com/konecorp/kone-mobile-fsm-cli"
