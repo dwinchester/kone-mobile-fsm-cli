@@ -1,4 +1,7 @@
 # KONE FSM app CLI
+
+![](img/kone-cli-icon.png)
+
 **A command line framework for managing the KONE FSM mobile applications**
 
 The KONE FSM app command-line interface (CLI) is a cross-platform tool chain for 
