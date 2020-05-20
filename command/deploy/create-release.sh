@@ -72,9 +72,9 @@ branch="release/${tag}"
 
 # # 1:- main project
 cd "${project_path}"
-# git checkout -b "${branch}" development
+git checkout -b "${branch}" development
 
-# 1:- submodule
+# 2:- submodule
 cd "android/React"
 latest_commit=$(git rev-parse HEAD)
 git checkout -b "${branch}" "${latest_commit}"
