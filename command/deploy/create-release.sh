@@ -86,7 +86,5 @@ git add .
 git commit -m "${description}"
 git push --set-upstream origin "${branch}"
 
-say "${green:-}SUCCESS${normal:-}"
-say "Finalise any changes to the project, then: ${yellow:-}kone deploy push${normal:-}"
-say "Otherwise, when you are ready to trigger the release: ${yellow:-}kone deploy tag-release${normal:-}"
+say "${green:-}Success${normal:-} New release created.\nWhen you are ready, run: ${yellow:-}kone deploy tag-release${normal:-}"
 exit 0

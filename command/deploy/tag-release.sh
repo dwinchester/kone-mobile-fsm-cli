@@ -22,6 +22,5 @@ git push origin "${tag}"
 git checkout development
 git branch -D "release/${tag}"
 
-say "${green:-}SUCCESS${normal:-}"
-say "Please see: https://dev.azure.com/konecorp/kone-mobile-fsm-android/_build"
+say "${green:-}Success${normal:-} New tag created.\nPlease see: ${blue:-}https://dev.azure.com/konecorp/kone-mobile-fsm-android/_build${normal:-}"
 exit 0
