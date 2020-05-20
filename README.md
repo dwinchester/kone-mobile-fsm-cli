@@ -58,6 +58,24 @@ command file in the directory.
 
 ## Setup
 
+### Getting the code
+
+The easiest way to get the CLI onto your local machine is to simply clone the repository. 
+
+```
+git clone git@github.com:konecorp/kone-mobile-fsm-cli.git
+```
+
+If, however, you are not comfortable with GIT and its various commands, you can download the CLI as a ZIP file from the GITHUB project repository.
+
+Once you have downloaded the project, run the following command in your terminal; substituting the paths for your own.
+
+```
+unzip "YOUR_DOWNLOADS_FOLDER_PATH" -d "YOUR_TARGET_FOLDER_PATH"
+```
+
+### Creating an alias
+
 ```
 #!/bin/sh
 
