@@ -67,9 +67,33 @@ while [[ -d "${cmd_file}" && $arg_start -le $# ]]; do
   fi 
 done
 
-# prints out the version of the CLI in use
+# prints out the version of the CLI or SDK in use
+# TODO: This is not great but works for now
 if [[ "${!arg_start}" == "version" ]]; then
   say "${CLI_VERSION}"
+  exit 3
+elif [[ "${!arg_start}" == "--sdk-version" ]]; then
+  say "${SDK_VERSION}"
+  exit 3
+elif [[ "${!arg_start}" == "--info" ]]; then
+  # get the latest commit hash for the CLI
+  cd "${ROOT_DIR}" && commit=$( git rev-parse --short HEAD );
+  echo ""
+  echo "KONE FSM app CLI:"
+  echo "  Version: ${CLI_VERSION}"
+  echo "  Commit: ${commit}"
+  echo ""
+  echo "Runtime Environment:"
+  echo "  TBD"
+  echo ""
+  echo "CLI settings:"
+  echo "  Project Path: $( get_project_path )"
+  echo "  Primary branch: ${BRANCH_MAIN}"
+  echo "  Submodule branch: ${BRANCH_SUBMODULE}"
+  echo "  Version: ${VERSION_TAG}"
+  echo "  Device ID: ${DEVICE_ID}"
+  echo "  Logging Files Path: ${LOGGING_FILES_PATH}"
+  echo ""
   exit 3
 fi
 

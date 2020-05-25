@@ -21,7 +21,14 @@ git tag "${tag}"
 # pipeline
 git push origin "${tag}"
 
-# remove your local release branch
+# remove your local release branches:
+
+# 1:- main project
+git checkout development 
+git branch -D "release/${tag}"
+
+# 2:- submodule
+cd "android/React"
 git checkout development
 git branch -D "release/${tag}"
 

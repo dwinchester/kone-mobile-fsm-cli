@@ -29,7 +29,9 @@ initialize_submodule() {
 install_app() {
   eval $invocation
 
-  project_path="$(get_project_path)"
+  # get the project location
+  local install_root="$(resolve_installation_path "${INSTALL_DIR}")"
+  local project_path="$(combine_paths "${install_root}" "${ASSET_RELATIVE_PATH}")"
 
   # check if the project is already installed
   if is_project_installed "${project_path}"; then
