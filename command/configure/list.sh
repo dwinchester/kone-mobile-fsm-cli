@@ -46,11 +46,11 @@ done
 config_file="${ROOT_DIR}/config/${profile}.settings"
 
 if [ ! -f "${config_file}" ]; then
-  say_warning "Profile '${profile}' not found."
+  say_err "No such profile found: ${profile}"
   exit 0
 fi
 
-say "Showing content for profile '${profile}'."
+say "Showing content for profile: ${profile}"
 
 cat "${config_file}"
 exit 0
