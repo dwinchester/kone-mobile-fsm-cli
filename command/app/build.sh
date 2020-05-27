@@ -21,6 +21,8 @@ show_help() {
   echo ""
 }
 
+# TODO: Get named profile
+
 profile="default"
 build_type="${BUILD_TYPE}"
 non_dynamic_params=""

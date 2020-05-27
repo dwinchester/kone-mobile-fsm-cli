@@ -22,6 +22,8 @@ show_help() {
   echo ""
 }
 
+# TODO: Get named profile
+
 profile="default"
 build_type="${BUILD_TYPE}"
 device="${DEVICE_ID}"
@@ -60,12 +62,12 @@ do
   shift
 done
 
+# TODO: Change APK dir based on build type
+
 output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/qa/release"
 apk_path="$(combine_paths $(get_project_path) ${output_dir})"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
-
-# TODO: Get named profile
 
 say "Installing KONE FSM app to device ID: ${yellow:-}${device}${normal:-}"
 
