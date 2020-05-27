@@ -9,9 +9,11 @@ show_help() {
   echo "Usage: kone app install [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"
-  echo "  -h, --help      Show command line help."     
-  echo "  --device        The device ID from the output of kone app list-devices command."
-  echo "  --reinstall     Reinstall an existing app, keeping its data." 
+  echo "  -h, --help                    Show command line help." 
+  echo "  --build-type <BUILD_TYPE>     The version of the app that you want to build."    
+  echo "  --device <DEVICE_ID>          The device ID from the output of kone app list-devices command."
+  echo "  --profile <PROFILE>           Specifies the named profile to use for this command." 
+  echo "  --reinstall                   Reinstall an existing app, keeping its data." 
   echo ""
   echo "Examples:"
   echo "  kone app install"      
@@ -20,6 +22,8 @@ show_help() {
   echo ""
 }
 
+profile="default"
+build_type="${BUILD_TYPE}"
 device="${DEVICE_ID}"
 non_dynamic_params=""
 
@@ -33,11 +37,19 @@ do
       ;;
     install)
       ;;
-    -d|--device)
+    --device)
       shift
       device="${1}"
-      ;; 
-    -r|--reinstall)
+      ;;
+    --build-type)
+      shift
+      build_type=="${1}"
+      ;;      
+    --profile)
+      shift
+      profile=="${1}"
+      ;;
+    --reinstall)
       non_dynamic_params+=" -r"
       ;;
     *)
@@ -52,6 +64,8 @@ output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/qa/r
 apk_path="$(combine_paths $(get_project_path) ${output_dir})"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
+
+# TODO: Get named profile
 
 say "Installing KONE FSM app to device ID: ${yellow:-}${device}${normal:-}"
 
