@@ -5,13 +5,16 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Prints all installed packages on the running device."   
+  echo "Description: Prints all packages on the running device."   
   echo "Usage: kone app list-packages [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"
   echo "  -h, --help                Show command line help."  
-  echo "  --device <DEVICE_ID>    The name of the device."   
+  echo "  --device <DEVICE_ID>      The ID of the connected device."  
+  echo "  --enabled                 Print only enabled packages." 
+  echo "  --system                  Print only system packages." 
   echo "  --third-party             Print only 3rd party (or non-system) packages."
+  echo "  --uninstalled             Include uninstalled packages."
   echo ""
   echo "Examples:"
   echo "  kone app list-packages --help"
@@ -22,7 +25,7 @@ show_help() {
 }
 
 device="${DEVICE_ID}"
-dynamic_params=""
+non_dynamic_params=""
 
 while [ $# -ne 0 ]
 do
@@ -38,8 +41,17 @@ do
       shift
       device="${1}"
       ;;
+    --enabled)
+      non_dynamic_params+=" -e"
+      ;; 
+    --system)
+      non_dynamic_params+=" -s"
+      ;; 
     --third-party)
-      dynamic_params+=" -3"
+      non_dynamic_params+=" -3"
+      ;; 
+    --uninstalled)
+      non_dynamic_params+=" -u"
       ;; 
     *)
       say_err "$(unknown_command_message "${key}")"
@@ -53,5 +65,5 @@ cd "${HOME}/${ANDROID_HOME}/platform-tools"
 
 echo "List of packages"
 
-adb -s "${device}" shell pm list packages "${dynamic_params}"
+adb -s "${device}" shell pm list packages ${non_dynamic_params}
 exit 0

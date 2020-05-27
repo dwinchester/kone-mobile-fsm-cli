@@ -11,7 +11,7 @@ show_help() {
   echo "Options:"
   echo "  -h, --help                    Show command line help." 
   echo "  --build-type <BUILD_TYPE>     The version of the app that you want to build."    
-  echo "  --device <DEVICE_ID>          The device ID from the output of kone app list-devices command."
+  echo "  --device <DEVICE_ID>          The ID of the connected device."
   echo "  --profile <PROFILE>           Specifies the named profile to use for this command." 
   echo "  --reinstall                   Reinstall an existing app, keeping its data." 
   echo ""
