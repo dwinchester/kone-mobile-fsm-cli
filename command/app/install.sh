@@ -53,9 +53,9 @@ apk_path="$(combine_paths $(get_project_path) ${output_dir})"
 
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
 
-say "Installing KONE FSM app to device ID: ${device}"
+say "Installing KONE FSM app to device ID: ${yellow:-}${device}${normal:-}"
 
 # if the APK is built using a developer preview SDK, you must include the 
 # -t option with the install command to install a test APK
-adb -s "${device}" install "${non_dynamic_params}" "${apk_path}/FieldService-App-qa-release.apk"
+adb -s "${device}" install ${non_dynamic_params} "${apk_path}/FieldService-App-qa-release.apk"
 exit 0
