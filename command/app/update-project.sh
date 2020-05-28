@@ -3,6 +3,8 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
+# TODO: Get named profile
+
 project_path="$(get_project_path)"
 cd "${project_path}"
 
