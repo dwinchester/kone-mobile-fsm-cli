@@ -42,5 +42,4 @@ fi
 log_file_path="$( combine_paths ${logs_dir} ${log_file_name} )"
 
 adb logcat -v brief | grep -e "${PACKAGE_NAME}" > "${log_file_path}"
-
 exit 0

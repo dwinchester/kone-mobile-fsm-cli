@@ -207,13 +207,6 @@ get_launch_file() {
   return 0
 }
 
-is_app_installed() {
-  if adb shell pm list packages | grep ${PACKAGE_NAME}; then
-    return 0
-  fi
-  return 1
-}
-
 set_config() {
   eval $invocation
 

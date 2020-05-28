@@ -65,9 +65,9 @@ elif [ "${show_history}" = true ]; then
 fi
 
 say "Checking for updates:"
-echo "${magenta:-}android project${normal:-}"
+echo "${magenta:-}Android Project${normal:-}"
 git status -sb
-echo "${magenta:-}dependencies${normal:-}"
+echo "${magenta:-}Submodule Dependencies${normal:-}"
 echo $( git submodule | awk '{ print $2 }' )
 cd "android/React"
 git status -sb
