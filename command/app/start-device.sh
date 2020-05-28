@@ -6,12 +6,6 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-help_arg=2
-if [ "${!help_arg}" == "help" ]; then
-  say "Usage: kone app start-device"  
-  exit 3
-fi
-
 # go to the emulator directory
 cd "${HOME}/${ANDROID_HOME}/emulator"
 

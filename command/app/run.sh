@@ -10,7 +10,8 @@ show_help() {
   echo ""
   echo "Options:"
   echo "  -h, --help                Show command line help."  
-  echo "  --device <DEVICE_ID>      The name of the device."
+  echo "  --device <DEVICE_ID>      The ID of the connected device."
+  echo "  --profile <PROFILE>       Specifies the named profile to use for this command."
   echo ""
   echo "Examples:"
   echo "  kone app run --help"
@@ -34,6 +35,10 @@ do
     --device)
       shift
       device="${1}"
+      ;;
+    --profile)
+      shift
+      profile=="${1}"
       ;;
     *)
       say_err "$(unknown_command_message "${key}")"
