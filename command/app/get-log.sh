@@ -20,8 +20,6 @@ resolve_logs_path() {
   return 0
 }
 
-device="${DEVICE_ID}"
-
 cd "${HOME}/${ANDROID_HOME}/platform-tools"
 
 # the name of the file that logs are written to; e.g. android-debug-202005191027.log

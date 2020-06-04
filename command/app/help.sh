@@ -9,6 +9,7 @@ echo "  build               Builds the project and all of its dependencies into 
 echo "  bundle              Bundles the react-native dependencies for offline use."
 echo "  clean               Delete all generated files, removes build folders."
 echo "  delete-project      Delete the project from the configure install directory."
+echo "  get-log             Creates a log file with diagnostic output for all system services running on a device."
 echo "  get-project         Clone the project and install project-to-project dependencies."
 echo "  help                Show command line help."
 echo "  install             Installs a package to a device."
