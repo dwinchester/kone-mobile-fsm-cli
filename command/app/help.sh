@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo ""
-echo "Description: Provides mobile developers and testers with the capabilities to manage their local projects."
+echo "Description: Allows mobile developers and testers to communicate with a device."
 echo "Usage: kone app [options] [[--] <additional arguments>]]"
 echo ""
 echo "Options:"
