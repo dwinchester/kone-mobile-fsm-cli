@@ -9,10 +9,13 @@ show_help() {
   echo "Usage: kone app build [options]"
   echo ""
   echo "Options:"
-  echo "  -h, --help                    Show command line help." 
-  echo "  --build-type <BUILD_TYPE>     The version of the app that you want to build."
-  echo "  --profile <PROFILE>           Specifies the named profile to use for this command." 
-  echo "  --stacktrace                  Show truncated stacktraces from the configured build task." 
+  echo "  -h, --help                      Show command line help." 
+  echo "  --build-type <BUILD_TYPE>       The version of the app that you want to build."
+  echo "  --no-build                      Doesn't build the project before running. It also implicitly sets the --no-restore flag."
+  echo "  --no-dependencies               Doesn't execute an implicit restore on the project dependencies when running the command."
+  echo "  --output <OUTPUT_DIRECTORY>     Specifies the path for the output directory."
+  echo "  --profile <PROFILE>             Specifies the named profile to use for this command." 
+  echo "  --stacktrace                    Show truncated stacktraces from the configured build task." 
   echo ""
   echo "Examples:"
   echo "  kone app build"  
@@ -23,9 +26,12 @@ show_help() {
 
 # TODO: Get named profile
 
-profile="default"
 build_type="${BUILD_TYPE}"
+no_build=false
+no_dependencies=false
 non_dynamic_params=""
+output=""
+profile="default"
 
 while [ $# -ne 0 ]
 do

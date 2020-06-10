@@ -5,13 +5,17 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Run a package on a device."   
+  echo "Description: Builds the package and its dependencies before running the package on a device."   
   echo "Usage: kone app run [options]"
   echo ""
   echo "Options:"
-  echo "  -h, --help                Show command line help."  
-  echo "  --device <DEVICE_ID>      The ID of the connected device."
-  echo "  --profile <PROFILE>       Specifies the named profile to use for this command."
+  echo "  -h, --help                      Show command line help."  
+  echo "  --device <DEVICE_ID>            The ID of the connected device."
+  echo "  --no-build                      Doesn't build the project before running. It also implicitly sets the --no-restore flag."
+  echo "  --no-dependencies               Doesn't execute an implicit restore on the project dependencies when running the command."
+  echo "  --output <OUTPUT_DIRECTORY>     Specifies the path for the output directory."
+  echo "  --profile <PROFILE>             Specifies the named profile to use for this command."
+  echo "  --verbosity <LEVEL>             Sets the verbosity level of the command. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]. The default value is m."
   echo ""
   echo "Examples:"
   echo "  kone app run --help"
@@ -21,6 +25,9 @@ show_help() {
 }
 
 device="${DEVICE_ID}"
+no_build=false
+no_dependencies=false
+profile="default"
 
 while [ $# -ne 0 ]
 do
@@ -35,6 +42,12 @@ do
     --device)
       shift
       device="${1}"
+      ;;
+    --no-build)
+      no_build=true
+      ;;
+    --no-dependencies)
+      no_dependencies=true
       ;;
     --profile)
       shift
