@@ -8,8 +8,8 @@ set -e
 project_path="$(get_project_path)"
 cd "${project_path}"
 
-# switch branches (or restore working tree files), and then fetch from and 
-# integrate all changes from the remote repository
+# switch branches (or restore working tree files), and then fetches from and 
+# integrates all changes from the remote repository
 
 git checkout "${BRANCH_MAIN}"
 git pull
