@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo ""
-echo "Description: Allows mobile developers and testers to communicate with a device."
+echo "Description: A command that facilitates a variety of device actions and allows mobile developers and testers to communicate with a device."
 echo "Usage: kone app [options] [[--] <additional arguments>]]"
 echo ""
 echo "Options:"

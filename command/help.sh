@@ -9,7 +9,7 @@ echo "  --info              Prints out detailed information about a project inst
 echo "  --sdk-version       Prints out the SDK version in use."             
 echo ""
 echo "Commands:"
-echo "  app                 Allows mobile developers and testers to communicate with a device."    
+echo "  app                 A command that facilitates a variety of device actions and allows mobile developers and testers to communicate with a device."    
 echo "  cli                 Create and remove CLI commands."  
 echo "  configure           Configure the KONE FSM app CLI options."
 echo "  deploy              Performs an app update and then deploys a new version to Firebase through Azure pipelines." 
