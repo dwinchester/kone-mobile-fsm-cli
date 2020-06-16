@@ -3,7 +3,7 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-cd "${HOME}/${ANDROID_HOME}/emulator"
+cd "${ANDROID_HOME}/emulator"
 
 echo "List of virtual devices"
 

@@ -26,6 +26,16 @@ initialize_submodule() {
   return 0
 }
 
+get_launch_file() {
+  eval $invocation
+
+  local project_path="${1}"
+  local launch_file="$(combine_paths "${project_path}" "${LAUNCH_FILE_RELATIVE_PATH}")"
+
+  echo "${magenta:-}Launch file: ${launch_file}${normal:-}"
+  return 0
+}
+
 install_app() {
   eval $invocation
 

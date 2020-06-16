@@ -61,7 +61,7 @@ do
   shift
 done
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 say "Starting KONE FSM app."
 # start the app package with the component name as defined in the manifest

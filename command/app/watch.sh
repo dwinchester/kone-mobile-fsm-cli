@@ -2,7 +2,7 @@
 
 set -e
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 ${ROOT_DIR}/coloredlogcat.py
 

@@ -67,7 +67,7 @@ done
 output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/qa/release"
 apk_path="$(combine_paths $(get_project_path) ${output_dir})"
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 say "Installing KONE FSM app."
 

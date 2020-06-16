@@ -197,16 +197,6 @@ get_project_path() {
   return 0
 }
 
-get_launch_file() {
-  eval $invocation
-
-  local project_path="${1}"
-  local launch_file="$(combine_paths "${project_path}" "${LAUNCH_FILE_RELATIVE_PATH}")"
-
-  echo "${magenta:-}Launch file: ${launch_file}${normal:-}"
-  return 0
-}
-
 set_config() {
   eval $invocation
 

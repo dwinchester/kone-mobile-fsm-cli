@@ -61,7 +61,7 @@ do
   shift
 done
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 echo "List of packages"
 

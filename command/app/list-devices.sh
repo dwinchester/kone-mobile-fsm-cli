@@ -3,7 +3,7 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 # list all AVD names that are connected to the adb server
 adb devices -l

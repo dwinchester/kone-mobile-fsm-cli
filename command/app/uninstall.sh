@@ -3,7 +3,7 @@
 set -e
 . "${ROOT_DIR}/utils.sh"
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 exists=$( adb shell pm list packages | grep ${PACKAGE_NAME} )
 if [ "${exists}" = "package:${PACKAGE_NAME}" ]; then

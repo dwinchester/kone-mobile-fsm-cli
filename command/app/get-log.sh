@@ -20,7 +20,7 @@ resolve_logs_path() {
   return 0
 }
 
-cd "${HOME}/${ANDROID_HOME}/platform-tools"
+cd "${ANDROID_HOME}/platform-tools"
 
 # the name of the file that logs are written to; e.g. android-debug-202005191027.log
 now="$( date +"%Y%m%d%I%M" )"

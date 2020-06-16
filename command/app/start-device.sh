@@ -7,7 +7,7 @@ set -e
 . "${ROOT_DIR}/utils.sh"
 
 # go to the emulator directory
-cd "${HOME}/${ANDROID_HOME}/emulator"
+cd "${ANDROID_HOME}/emulator"
 
 # check if the emulator command exists first
 if ! type emulator > /dev/null; then
