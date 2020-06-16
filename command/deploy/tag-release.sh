@@ -10,8 +10,9 @@ cd "${project_path}"
 
 tag="${VERSION_TAG}"
 
- # we do this in case any changes were made between creating the deployment and tagging it
-git pull
+ # we do this in case any changes were made between creating the deployment and tagging it;
+ # for example, updating the README
+git pull origin "${tag}"
 
 # create a `lightweight` tag for the release point, see: https://git-scm.com/book/en/v2/Git-Basics-Tagging 
 git tag "${tag}"
@@ -23,7 +24,7 @@ git push origin "${tag}"
 
 # remove your local release branches:
 
-# 1:- main project
+# 1:- main projectgit 
 git checkout development 
 git branch -D "release/${tag}"
 
