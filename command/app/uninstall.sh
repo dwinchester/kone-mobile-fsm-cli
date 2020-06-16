@@ -5,12 +5,11 @@ set -e
 
 cd "${ANDROID_HOME}/platform-tools"
 
-exists=$( adb shell pm list packages | grep ${PACKAGE_NAME} )
+exists=$(adb shell pm list packages | grep ${PACKAGE_NAME})
 if [ "${exists}" = "package:${PACKAGE_NAME}" ]; then
-  say "Uninstalling KONE FSM app."
-
   # remove the app package from the device
-  adb uninstall "${PACKAGE_NAME}"
+  adb uninstall "${PACKAGE_NAME}" >/dev/null
+  say "${green:-}Success${normal:-} App uninstalled."
   exit 0
 fi
 

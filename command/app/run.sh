@@ -63,7 +63,7 @@ done
 
 cd "${ANDROID_HOME}/platform-tools"
 
-say "Starting KONE FSM app."
+say "Starting app. Please wait."
 # start the app package with the component name as defined in the manifest
-adb -s "${device}" shell am start -n "${PACKAGE_NAME}/com.salesforce.fieldservice.app.ui.launcher.FieldServicePrerequisiteActivity"
+adb -s "${device}" shell am start -n "${PACKAGE_NAME}/com.salesforce.fieldservice.app.ui.launcher.FieldServicePrerequisiteActivity" >/dev/null
 exit 0
