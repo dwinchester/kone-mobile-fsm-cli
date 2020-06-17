@@ -11,28 +11,23 @@ show_help() {
   echo "Options:"
   echo "  -h, --help                      Show command line help." 
   echo "  --build-type <BUILD_TYPE>       The version of the app that you want to build."
-  echo "  --no-build                      Doesn't build the project before running. It also implicitly sets the --no-restore flag."
   echo "  --no-dependencies               Doesn't reinstall project dependencies when running the command."
   echo "  --output <OUTPUT_DIRECTORY>     Specifies the path for the output directory."
-  echo "  --profile <PROFILE>             Specifies the named profile to use for this command." 
   echo "  --refresh-dependencies          Execute an implicit gradle dependencies refresh when running the command."
   echo "  --stacktrace                    Show truncated stacktraces from the configured build task." 
   echo ""
   echo "Examples:"
   echo "  kone app build"  
+  echo "  kone app build --no-dependencies" 
   echo "  kone app build --stacktrace"      
   echo "  kone app build --build-type assembleDebug"
   echo ""
 }
 
-# TODO: Get named profile
-
 build_type="${BUILD_TYPE}"
-no_build=false
 no_dependencies=false
 non_dynamic_params=""
 output=""
-profile="default"
 
 while [ $# -ne 0 ]
 do
@@ -47,10 +42,13 @@ do
     --build-type)
       shift
       build_type=="${1}"
-      ;;     
-    --profile)
+      ;;   
+    --no-dependencies)
+      no_dependencies=true
+      ;;  
+    --output)
       shift
-      profile=="${1}"
+      output="${1}"
       ;;
     --stacktrace)
       non_dynamic_params+=" --stacktrace"
@@ -66,8 +64,19 @@ do
   shift
 done
 
-gradlew_path="$(combine_paths $(get_project_path) "/android/FieldService-Android")"
-cd "${gradlew_path}"
+# # bundles the react-native dependencies for offline use
+# if [ "${no_dependencies}" != true ]; then
+#   ( exec "${ROOT_DIR}/command/dev/bundle.sh" "--reinstall" "--update-apply" )
+# fi
 
-./gradlew clean ${build_type} ${non_dynamic_params}
+# gradlew_path="$(combine_paths $(get_project_path) "/android/FieldService-Android")"
+# cd "${gradlew_path}"
+
+# ./gradlew clean ${build_type} ${non_dynamic_params}
+
+# output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/qa/release"
+# apk_path="$(combine_paths $(get_project_path) ${output_dir})"
+
+cp -R "${apk_path}"/. "${output}"
+
 exit 0

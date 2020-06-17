@@ -11,7 +11,6 @@ show_help() {
   echo "Options:"
   echo "  -h, --help                Show command line help." 
   echo "  --reinstall               Removes the existing node modules folder and reinstalls all required packages."
-  echo "  --profile <PROFILE>       Specifies the named profile to use for this command." 
   echo "  --update-apply            Switch branches (or restores working tree files) to the configured branch."
   echo ""
   echo "Examples:"
@@ -20,9 +19,6 @@ show_help() {
   echo ""
 }
 
-# TODO: Get named profile
-
-profile="default"
 update_apply=false
 
 while [ $# -ne 0 ]
@@ -35,10 +31,6 @@ do
       ;;
     bundle)
       ;;    
-    --profile)
-      shift
-      profile=="${1}"
-      ;;
     --reinstall)
       reinstall=true
       ;;
@@ -56,8 +48,10 @@ done
 react_path="$(combine_paths $(get_project_path) "/android/React")"
 cd "${react_path}"
 
+# fetch missing commits and update the working tree of the submodule
 if [ "${update_apply}" = true ]; then
-  # fetches from and integrate all changes from the remote repository
+  say "Updating the registered submodule."
+
   git checkout "${BRANCH_SUBMODULE}"
   git pull
 fi
@@ -71,7 +65,7 @@ if [ "${reinstall}" = true ] && [ -d "node_modules" ]; then
   npm i
 fi
 
-say "Bundling for offline use."
+say "Generating bundle for offline use."
 
 react-native bundle \
     --platform android \
@@ -80,5 +74,5 @@ react-native bundle \
     --bundle-output ../FieldService-Android/FieldService-App/src/main/assets/kone.android.bundle \
     --assets-dest ../FieldService-Android/FieldService-App/src/main/res/
 
-say "${green:-}Success${normal:-} Project update completed."
+say "${green:-}Success${normal:-} Bundle update completed."
 exit 0

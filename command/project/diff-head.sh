@@ -11,7 +11,7 @@ show_help() {
   echo "Options:"
   echo "  --numstat           Shows the number of added and deleted lines in decimal notation and pathname without abbreviation, to make it more friendly."
   echo "  --shortstat         Output only the total number of modified files, as well as number of added and deleted lines."
-  echo "  --submodule-only    Show only changes in the project submodule."
+  echo "  --submodule-only    Show only changes in the registered submodule."
   echo ""
   echo "Examples:"
   echo "  kone dev diff-head"

@@ -11,11 +11,7 @@ show_help() {
   echo "Options:"
   echo "  -h, --help                      Show command line help."  
   echo "  --device <DEVICE_ID>            The ID of the connected device."
-  echo "  --no-build                      Doesn't build the project before running. It also implicitly sets the --no-restore flag."
-  echo "  --no-dependencies               Doesn't execute an implicit restore on the project dependencies when running the command."
-  echo "  --output <OUTPUT_DIRECTORY>     Specifies the path for the output directory."
-  echo "  --profile <PROFILE>             Specifies the named profile to use for this command."
-  echo "  --verbosity <LEVEL>             Sets the verbosity level of the command. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]. The default value is m."
+  echo "  --package <PACKAGE_NAME>        The name of the package to start."
   echo ""
   echo "Examples:"
   echo "  kone app run --help"
@@ -25,9 +21,7 @@ show_help() {
 }
 
 device="${DEVICE_ID}"
-no_build=false
-no_dependencies=false
-profile="default"
+pkg="${PACKAGE_NAME}"
 
 while [ $# -ne 0 ]
 do
@@ -43,15 +37,9 @@ do
       shift
       device="${1}"
       ;;
-    --no-build)
-      no_build=true
-      ;;
-    --no-dependencies)
-      no_dependencies=true
-      ;;
-    --profile)
+    --package)
       shift
-      profile=="${1}"
+      pkg="${1}"
       ;;
     *)
       say_err "$(unknown_command_message "${key}")"
@@ -65,5 +53,5 @@ cd "${ANDROID_HOME}/platform-tools"
 
 say "Starting app. Please wait."
 # start the app package with the component name as defined in the manifest
-adb -s "${device}" shell am start -n "${PACKAGE_NAME}/com.salesforce.fieldservice.app.ui.launcher.FieldServicePrerequisiteActivity" >/dev/null
+adb -s "${device}" shell am start -n "${pkg}/com.salesforce.fieldservice.app.ui.launcher.FieldServicePrerequisiteActivity" >/dev/null
 exit 0

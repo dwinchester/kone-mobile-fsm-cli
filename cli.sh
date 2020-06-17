@@ -12,6 +12,7 @@ exec 3>&1
 export ROOT_DIR=$(cd $(dirname ${0}) && pwd)
 script_name=$(basename "${0}")
 
+. "${ROOT_DIR}/sysfetch.sh"
 . "${ROOT_DIR}/utils.sh" # shellcheck source
 
 invocation='say_verbose "Calling: ${FUNCNAME[0]} $*$"' # Use in functions: eval $invocation
@@ -30,11 +31,11 @@ export $(cat "$(combine_paths ${ROOT_DIR} ${DEFAULT_PROFILE})" | xargs)
 # if no arguments are passed, then show the welcome message
 if [ $# == 0 ]; then
   echo ""  
-  echo "Welcome to the KONE FSM Mobile app CLI"
-  echo "-----------------------------------------"
-  echo "CLI Version ${cyan:-}${CLI_VERSION}${normal:-}"
+  echo "Welcome to the KONE Mobile FSM CLI"
+  echo "------------------------------------"
+  echo "CLI Version ${CLI_VERSION}"
   echo ""
-  echo "Use '${yellow:-}kone help${normal:-}' to see available options and commands or visit the project wiki."
+  echo "Use 'kone help' to see available options and commands or visit the project wiki."
   echo "Report issues and find source on GitHub: https://github.com/konecorp/kone-mobile-fsm-cli"
   echo ""
   exit 3
@@ -66,36 +67,6 @@ while [[ -d "${cmd_file}" && $arg_start -le $# ]]; do
     cmd_file="${cmd_file}/${!arg_start}.sh" 
   fi 
 done
-
-# prints out the version of the CLI or SDK in use
-# TODO: This is not great but works for now
-if [[ "${!arg_start}" == "version" ]]; then
-  say "${CLI_VERSION}"
-  exit 3
-elif [[ "${!arg_start}" == "--sdk-version" ]]; then
-  say "${SDK_VERSION}"
-  exit 3
-elif [[ "${!arg_start}" == "--info" ]]; then
-  # get the latest commit hash for the CLI
-  cd "${ROOT_DIR}" && commit=$( git rev-parse --short HEAD );
-  echo ""
-  echo "KONE FSM app CLI:"
-  echo "  Version: ${CLI_VERSION}"
-  echo "  Commit: ${commit}"
-  echo ""
-  echo "Runtime Environment:"
-  echo "  TBD"
-  echo ""
-  echo "CLI settings:"
-  echo "  Project Path: $( get_project_path )"
-  echo "  Primary branch: ${BRANCH_MAIN}"
-  echo "  Submodule branch: ${BRANCH_SUBMODULE}"
-  echo "  Version: ${VERSION_TAG}"
-  echo "  Device ID: ${DEVICE_ID}"
-  echo "  Logging Files Path: ${LOGGING_FILES_PATH}"
-  echo ""
-  exit 3
-fi
 
 # place the arguments for the command in their own list to make them easier 
 # to work with

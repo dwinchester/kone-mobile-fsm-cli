@@ -1,10 +1,10 @@
-# KONE FSM app CLI
+# KONE CLI
 
 ![](img/kone-cli-icon.png)
 
 **A command line framework for managing the KONE FSM mobile applications**
 
-The KONE FSM app command-line interface (CLI) is a cross-platform tool chain for 
+The KONE command-line interface (CLI) is a cross-platform tool chain for 
 building, running, and deploying the KONE FSM mobile applications. Rather than 
 write the scripts in something like Go or Python, or merge them into a single 
 bash script, I opted to build a framework which allows an executable to be presented 
@@ -26,7 +26,7 @@ kone deploy create-release --version 1.2.3
 
 ## Customizing the CLI
 The CLI is designed to make it as simple as possible for you to create **your** application.
-To that end, everything that makes it the "KONE FSM app CLI" can be changed by simply modifying
+To that end, everything that makes it the "KONE Mobile FSM CLI" can be changed by simply modifying
 the files in the `command` directory.
 
 ## Adding Commands

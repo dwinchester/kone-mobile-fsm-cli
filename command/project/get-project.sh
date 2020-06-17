@@ -45,7 +45,7 @@ install_app() {
 
   # check if the project is already installed
   if is_project_installed "${project_path}"; then
-    say_err "KONE FSM app is already installed."
+    say_err "Source is already installed."
     return 0
   fi
 
