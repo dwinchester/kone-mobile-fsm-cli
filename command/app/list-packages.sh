@@ -64,5 +64,5 @@ cd "${ANDROID_HOME}/platform-tools"
 
 echo "List of packages"
 
-adb -s "${device}" shell pm list packages ${non_dynamic_params}
+./adb -s "${device}" shell pm list packages ${non_dynamic_params}
 exit 0

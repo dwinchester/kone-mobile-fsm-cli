@@ -90,5 +90,5 @@ log_file_path="$( combine_paths ${logs_path} ${file_name} )"
 
 cd "${ANDROID_HOME}/platform-tools"
 
-adb -s "${device}" logcat -v brief | grep -e "${pkg}" > "${log_file_path}"
+./adb -s "${device}" logcat -v brief | grep -e "${pkg}" > "${log_file_path}"
 exit 0

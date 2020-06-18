@@ -44,4 +44,4 @@ done
 cd "${ANDROID_HOME}/platform-tools"
 
 # clear the current buffer
-adb -s "${device}" logcat -c
+./adb -s "${device}" logcat -c

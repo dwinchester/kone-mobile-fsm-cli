@@ -52,5 +52,5 @@ cd "${ANDROID_HOME}/platform-tools"
 
 say "Starting app. Please wait."
 # start the app package with the component name as defined in the manifest
-adb -s "${device}" shell am start -n "${pkg}/com.salesforce.fieldservice.app.ui.launcher.FieldServicePrerequisiteActivity" >/dev/null
+./adb -s "${device}" shell am start -n "${pkg}/com.salesforce.fieldservice.app.ui.launcher.FieldServicePrerequisiteActivity" >/dev/null
 exit 0

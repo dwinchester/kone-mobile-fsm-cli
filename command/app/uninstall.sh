@@ -52,11 +52,11 @@ done
 cd "${ANDROID_HOME}/platform-tools"
 
 # get all third-party installed packages and filter to find the specified package 
-exists=$( adb -s "${device}" shell pm list packages -3 | grep ${pkg} )
+exists=$( ./adb -s "${device}" shell pm list packages -3 | grep ${pkg} )
 
 if [ "${exists}" = "package:${pkg}" ]; then
   # remove the package from the device
-  adb -s "${device}" uninstall "${pkg}" >/dev/null
+  ./adb -s "${device}" uninstall "${pkg}" >/dev/null
   say "${green:-}Success${normal:-} App uninstalled from ${device}."
   exit 0
 fi

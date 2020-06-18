@@ -67,5 +67,5 @@ done
 
 cd "${ANDROID_HOME}/platform-tools"
 
-adb -s "${device}" logcat -v brief "${pkg}":"${log_level}"
+./adb -s "${device}" logcat -v brief "${pkg}":"${log_level}"
 exit 0

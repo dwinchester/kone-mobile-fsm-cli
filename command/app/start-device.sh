@@ -10,7 +10,7 @@ set -e
 cd "${ANDROID_HOME}/emulator"
 
 # check if the emulator command exists first
-if ! type emulator > /dev/null; then
+if ! type ./emulator > /dev/null; then
   say_err "Command not found: emulator"
   exit 1
 fi
@@ -34,7 +34,7 @@ Choose an emulator: " num
 # if the input is valid, launch our emulator on a separate PID and exit
 if [ $num -lt $N ] && [ $num -gt 0 ]; then
   avd=${avds[$num-1]}
-  emulator "@$avd" > /dev/null 2>&1 &
+  ./emulator "@$avd" > /dev/null 2>&1 &
   exit 0
 else
   say_err "Invalid entry : ${num}"

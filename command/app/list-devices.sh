@@ -6,5 +6,5 @@ set -e
 cd "${ANDROID_HOME}/platform-tools"
 
 # list all AVD names that are connected to the adb server
-adb devices -l
+./adb devices -l
 exit 0
