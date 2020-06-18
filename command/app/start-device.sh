@@ -16,7 +16,7 @@ if ! type emulator > /dev/null; then
 fi
 
 # gather emulators that exist on this computer
-avds=( $(emulator -list-avds 2>&1 ) )
+avds=( $(./emulator -list-avds 2>&1 ) )
 
 # display list of emulators
 echo "Available emulators"
