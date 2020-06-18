@@ -6,7 +6,7 @@ set -e
 cd "${ROOT_DIR}"
 
 say "Checking for updates."
-git pull
+git pull >/dev/null
 
-say "${green:-}Success${normal:-} CLI up-to-date."
+say "${green:-}Success${normal:-} CLI up to date."
 exit 0
