@@ -9,7 +9,6 @@ show_help() {
   echo ""
   echo "Options:"
   echo "  -h, --help                      Show command line help." 
-  echo "  --clear                         Clear the current buffer before starting logcat."
   echo "  --device <DEVICE_ID>            The ID of the connected device."
   echo "  --log-level <LOG_LEVEL>         The defined log level for messages to be displayed."
   echo "  --package <PACKAGE_NAME>        The name of the package to uninstall."
@@ -46,9 +45,6 @@ do
       ;;
     watch-raw)
       ;;
-    --clear)
-      clear=true
-      ;;  
     --device)
       shift
       device="${1}"
@@ -70,9 +66,6 @@ do
 done
 
 cd "${ANDROID_HOME}/platform-tools"
-
-# clear the current buffer
-[ "${clear}" = true ] && adb -s "${device}" logcat -c
 
 adb -s "${device}" logcat -v brief "${pkg}":"${log_level}"
 exit 0

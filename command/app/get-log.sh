@@ -10,32 +10,20 @@ show_help() {
   echo "Options:"
   echo "  -h, --help                      Show command line help." 
   echo "  --device <DEVICE_ID>            The ID of the connected device."
-  echo "  --file-name <FILE_NAME>         "
-  echo "  --path <LOGS_PATH>              "
-  echo "  --remove-old                    "
+  echo "  --file-name <FILE_NAME>         The name of the file that logs are written to."
+  echo "  --path <LOGS_PATH>              The directory that log files are written to. The default is the configured logs path."
+  echo "  --remove-old                    Removes all old log files before a new log file is created."
   echo ""
   echo "Examples:"
-  echo "  kone app install"    
-  echo "  kone app install --apk /users/lwinchester/Desktop/apks/FieldService-App-qa-release.apk" 
-  echo "  kone app install --build-flavor production --device emulator-5554"       
-  echo "  kone app install --device ZY32298W3J"
-  echo "  kone app install --reinstall"
+  echo "  kone app get-log" 
+  echo "  kone app get-log --remove-old "          
+  echo "  kone app get-log --device ZY32298W3J"
+  echo "  kone app get-log --path /Users/lwinchester/Desktop/Logs"
+  echo "  kone app get-log --file-name whatever.log --path /Users/lwinchester/Desktop/Logs"
   echo ""
 }
 
-resolve_logs_path() {
-  local 
-  
-  if [ "${logs_path}" = "auto" ]; then
-    logs_path="${ROOT_DIR}/log"
-    echo "${logs_path}"
-    return 0
-  fi 
-
-  echo "${logs_path}"
-  return 0
-}
-
+clear=false
 device="${DEVICE_ID}"
 remove_logs=false
 log_level="E"
@@ -87,10 +75,7 @@ done
 # is in the CLI root/log directory
 if [ "${logs_path}" = "auto" ]; then
   logs_path="${ROOT_DIR}/log"
-fi 
-
-# check if the directory exists at the specified path
-if [ ! -d "${logs_path}" ]; then
+elif [ ! -d "${logs_path}" ]; then # check that the configured path exists
   say_err "No such directory: ${logs_path}. Exiting with code 1."
   exit 1
 fi
@@ -105,5 +90,5 @@ log_file_path="$( combine_paths ${logs_path} ${file_name} )"
 
 cd "${ANDROID_HOME}/platform-tools"
 
-adb -s "${device}" logcat -v threadtime | grep -e "${pkg}" > "${log_file_path}"
+adb -s "${device}" logcat -v brief | grep -e "${pkg}" > "${log_file_path}"
 exit 0
