@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Copies the default profile template and creates a new profile." 
   echo "Usage: kone configure new [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"

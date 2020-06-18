@@ -1,7 +1,6 @@
 #!/bin/sh
 
 echo ""
-echo "Description: Create and delete CLI commands. Updates the CLI to the latest version."
 echo "Usage: kone cli [options]"
 echo ""
 echo "Options:"

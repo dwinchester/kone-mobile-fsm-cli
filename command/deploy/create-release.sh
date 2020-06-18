@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Creates the release branches for the project."
   echo "Usage: kone deploy [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"

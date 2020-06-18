@@ -5,8 +5,7 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Bundles the react-native dependencies for offline use."
-  echo "Usage: kone app bundle [options]"
+  echo "Usage: kone project bundle [options]"
   echo ""
   echo "Options:"
   echo "  -h, --help                Show command line help." 
@@ -14,8 +13,8 @@ show_help() {
   echo "  --update-apply            Switch branches (or restores working tree files) to the configured branch."
   echo ""
   echo "Examples:"
-  echo "  kone app bundle"  
-  echo "  kone app bundle --reinstall"
+  echo "  kone project bundle"  
+  echo "  kone project bundle --reinstall"
   echo ""
 }
 

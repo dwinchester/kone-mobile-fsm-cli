@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Displays your current configuration values." 
   echo "Usage: kone configure list [options]"
   echo ""
   echo "Options:"

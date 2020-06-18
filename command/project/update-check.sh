@@ -5,8 +5,7 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Checks if there are updates available for the project."   
-  echo "Usage: kone app update-check [options]"
+  echo "Usage: kone project update-check [options]"
   echo ""
   echo "Options:"
   echo "  -h, --help      Show command line help."  
@@ -15,10 +14,10 @@ show_help() {
   echo "  --log           Shows a oneline representation of your local repository commit logs."
   echo ""
   echo "Examples:"
-  echo "  kone app update-check --help"
-  echo "  kone app update-check"
-  echo "  kone app update-check --history"
-  echo "  kone app update-check --log --graph"
+  echo "  kone project update-check --help"
+  echo "  kone project update-check"
+  echo "  kone project update-check --history"
+  echo "  kone project update-check --log --graph"
   echo "" 
 }
 

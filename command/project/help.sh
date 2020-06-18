@@ -1,8 +1,7 @@
 #!/bin/sh
 
 echo ""
-echo "Description: Provides mobile developers and testers with the capabilities to manage their local projects."
-echo "Usage: kone app [options] [[--] <additional arguments>]]"
+echo "Usage: kone project [options] [[--] <additional arguments>]]"
 echo ""
 echo "Options:"
 echo "  build               Builds the project and all of its dependencies into an installable package."

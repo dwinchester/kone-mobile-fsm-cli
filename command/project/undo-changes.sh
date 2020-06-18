@@ -10,7 +10,7 @@ undo() {
 
 help_arg=2
 if [ "${!help_arg}" == "help" ]; then
-  say "Usage: kone dev undo-changes"  
+  say "Usage: kone project undo-changes"  
   exit 3
 fi
 

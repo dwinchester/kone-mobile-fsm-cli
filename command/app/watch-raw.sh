@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: xxx."
   echo "Usage: kone app watch-raw [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"

@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Removes a package from a device."
   echo "Usage: kone app uninstall [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"

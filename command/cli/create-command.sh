@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Create a new CLI command."   
   echo "Usage: kone cli create-command [options]"
   echo ""
   echo "Options:"

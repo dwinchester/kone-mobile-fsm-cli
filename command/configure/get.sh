@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Get a configuration value from the config file."   
   echo "Usage: kone configure get [options]"
   echo ""
   echo "Options:"

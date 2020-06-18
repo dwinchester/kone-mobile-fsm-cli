@@ -5,8 +5,7 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Builds the project and all of its dependencies into an installable package."
-  echo "Usage: kone app build [options]"
+  echo "Usage: kone project build [options]"
   echo ""
   echo "Options:"
   echo "  -h, --help                      Show command line help." 
@@ -17,10 +16,10 @@ show_help() {
   echo "  --stacktrace                    Show truncated stacktraces from the configured build task." 
   echo ""
   echo "Examples:"
-  echo "  kone app build"  
-  echo "  kone app build --no-dependencies" 
-  echo "  kone app build --stacktrace"      
-  echo "  kone app build --build-type assembleDebug"
+  echo "  kone project build"  
+  echo "  kone project build --no-dependencies" 
+  echo "  kone project build --stacktrace"      
+  echo "  kone project build --build-type assembleDebug"
   echo ""
 }
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Description: Configure the KONE FSM app CLI options."     
+echo ""
 echo "Usage: kone configure [commands] [options]"
 echo ""
 echo "Commands:"

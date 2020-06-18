@@ -5,14 +5,12 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Creates a log file with diagnostic output for all system services running on a device."
   echo "Usage: kone app get-log [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"
   echo "  -h, --help                      Show command line help." 
   echo "  --device <DEVICE_ID>            The ID of the connected device."
   echo "  --file-name <FILE_NAME>         "
-  echo "  --log-level <LOG_LEVEL>         The defined log level for messages to be displayed."
   echo "  --path <LOGS_PATH>              "
   echo "  --remove-old                    "
   echo ""
@@ -22,15 +20,6 @@ show_help() {
   echo "  kone app install --build-flavor production --device emulator-5554"       
   echo "  kone app install --device ZY32298W3J"
   echo "  kone app install --reinstall"
-  echo ""
-  echo "Log-Levels:"
-  echo "  V — Verbose"
-  echo "  D — Debug (Default)"
-  echo "  I — Info"
-  echo "  W — Warning"
-  echo "  E — Error"
-  echo "  F — Fatal"
-  echo "  S — Silent"
   echo ""
 }
 
@@ -55,7 +44,7 @@ pkg="${PACKAGE_NAME}"
 
 # the name of the file that logs are written to; e.g. android-debug-202005191027.log
 now="$( date +"%Y%m%d%I%M" )"
-file_name="android-fsm-${now}.log"
+file_name="android-debug-${now}.log"
 
 while [ $# -ne 0 ]
 do
@@ -77,10 +66,6 @@ do
       ;;
     --remove-old)
       remove_logs=true
-      ;;
-    --log-level)
-      shift
-      log_level="${1}"
       ;;
     --package)
       shift
@@ -120,6 +105,5 @@ log_file_path="$( combine_paths ${logs_path} ${file_name} )"
 
 cd "${ANDROID_HOME}/platform-tools"
 
-# adb -s "${device}" logcat "${pkg}":"${log_level}" > "${log_file_path}"
-adb -s "${device}" logcat -v brief | grep -e "${pkg}" > "${log_file_path}"
+adb -s "${device}" logcat -v threadtime | grep -e "${pkg}" > "${log_file_path}"
 exit 0

@@ -84,8 +84,7 @@ do
   case "${key}" in
     -h|--help|help)
       echo ""
-      echo "Description: Clone the project and install project-to-project dependencies."
-      echo "Usage: kone app get-project [options] [[--] <additional arguments>]]"
+      echo "Usage: kone project get-project [options] [[--] <additional arguments>]]"
       echo ""
       echo "Options:"
       echo "  -h, --help                Show command line help."     
@@ -102,8 +101,8 @@ do
       echo "    - $HOME/Library/Kone"
       echo ""
       echo "Examples:"
-      echo "  kone app get-project --help"
-      echo "  kone app get-project --output-launch-file"
+      echo "  kone project get-project --help"
+      echo "  kone project get-project --output-launch-file"
       echo ""
       exit 3
       ;;     

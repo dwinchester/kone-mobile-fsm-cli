@@ -5,8 +5,7 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Switch branches or restore working tree files. Updates files in the working tree to match the version in the index or the specified tree."
-  echo "Usage: kone dev switch-branches [options]"
+  echo "Usage: kone project switch-branches [options]"
   echo ""
   echo "Options:"
   echo "  --main-branch <BRANCH>            The name of the branch for the main project checkout."
@@ -15,9 +14,9 @@ show_help() {
   echo "  --recurse-submodules              Update the content of the submodule according to the commit recorded in the superproject. If local modifications in a submodule would be overwritten the checkout will fail unless --force is used."
   echo ""
   echo "Examples:"
-  echo "  kone dev switch-branches --main feature/http-logging-xplatform --force"
-  echo "  kone dev switch-branches --main development --submodule feature/38456-analytics" 
-  echo "  kone dev switch-branches --help" 
+  echo "  kone project switch-branches --main feature/http-logging-xplatform --force"
+  echo "  kone project switch-branches --main development --submodule feature/38456-analytics" 
+  echo "  kone project switch-branches --help" 
   echo ""
   echo "Run 'kone [command] -h|--help' for more information on a command."
   echo ""

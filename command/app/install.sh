@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Installs a package to a device."
   echo "Usage: kone app install [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"

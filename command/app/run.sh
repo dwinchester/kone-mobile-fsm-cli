@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Builds the package and its dependencies before running the package on a device."   
   echo "Usage: kone app run [options]"
   echo ""
   echo "Options:"

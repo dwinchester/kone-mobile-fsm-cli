@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Prints all packages on the running device."   
   echo "Usage: kone app list-packages [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"

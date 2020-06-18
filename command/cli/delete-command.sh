@@ -5,7 +5,6 @@ set -e
 
 show_help() {
   echo ""
-  echo "Description: Delete the CLI command directory."   
   echo "Usage: kone cli delete-command [options]"
   echo ""
   echo "Options:"
