@@ -8,14 +8,14 @@ show_help() {
   echo "Usage: kone configure set [options]"
   echo ""
   echo "Options:"
-  echo "  -h, --help                Show command line help."  
-  echo "  --variable <VARNAME>      The name of the config value to set."
-  echo "  --value <CONFIG_VALUE>    The value to set."
-  echo "  --profile <PROFILE>       Specifies the named profile to use for this command."   
+  echo "  -h, --help                        Show command line help."  
+  echo "  -s, --setting <SETTING_NAME>      The name of the config value to set."
+  echo "  -v, --value <CONFIG_VALUE>        The value to set."
+  echo "  -p, --profile <PROFILE>           Specifies the named profile to use for this command."   
   echo ""
   echo "Examples:"
   echo "  kone configure set --help"
-  echo "  kone configure set --variable VERSION_TAG --value 1.2.3"
+  echo "  kone configure set --setting VERSION_TAG --value 1.2.3"
   echo "" 
 }
 
@@ -31,15 +31,15 @@ do
       ;;
     set)
       ;;
-    --variable)
+    -s|--setting)
       shift
       varname="${1}"
       ;;
-    --value)
+    -v|--value)
       shift
       value="${1}"
       ;;
-    --profile)
+    -p|--profile)
       shift
       profile="${1}"
       ;;

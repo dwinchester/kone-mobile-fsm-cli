@@ -54,7 +54,7 @@ do
       tag="${1}"
       # updates the VERSION_TAG setting in the configured profile. We do
       # this so that the `tag-release` command can push the new version
-      "${ROOT_DIR}/command/configure/set.sh" --variable VERSION_TAG --value "${1}"
+      "${ROOT_DIR}/command/configure/set.sh" --setting VERSION_TAG --value "${1}"
       ;; 
     *)
       say_err "$(unknown_command_message "${key}")"

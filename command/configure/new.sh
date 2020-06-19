@@ -8,9 +8,9 @@ show_help() {
   echo "Usage: kone configure new [options] [[--] <additional arguments>]]"
   echo ""
   echo "Options:"
-  echo "  -h, --help                    Show command line help."    
-  echo "  --profile <PROFILE_NAME>      Specifies the named profile to create."   
-  echo "  --set-default                 Sets the newly created profile as the default for the CLI." 
+  echo "  -h, --help                        Show command line help."    
+  echo "  -p, --profile <PROFILE_NAME>      Specifies the named profile to create."   
+  echo "  --set-default                     Sets the newly created profile as the default for the CLI." 
   echo ""
   echo "Examples:"
   echo "  kone configure new --help"
@@ -58,7 +58,7 @@ do
       ;;
     new)
       ;;
-    --profile)
+    -p|--profile)
       shift
       profile="${1}"
       ;;

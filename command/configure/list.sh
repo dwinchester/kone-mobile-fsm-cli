@@ -9,7 +9,7 @@ show_help() {
   echo ""
   echo "Options:"
   echo "  -h, --help              Show command line help."  
-  echo "  --profile <PROFILE>     Specifies the named profile to use for this command."   
+  echo "  -p, --profile <PROFILE>     Specifies the named profile to use for this command."   
   echo ""
   echo "Examples:"
   echo "  kone configure list --help"

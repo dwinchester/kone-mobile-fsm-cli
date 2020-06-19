@@ -8,14 +8,14 @@ show_help() {
   echo "Usage: kone configure get [options]"
   echo ""
   echo "Options:"
-  echo "  -h, --help                Show command line help."  
-  echo "  --profile <PROFILE>       Specifies the named profile to use for this command."   
-  echo "  --variable <VARNAME>      The name of the config value to retrieve."
+  echo "  -h, --help                      Show command line help."  
+  echo "  -p, --profile <PROFILE>         Specifies the named profile to use for this command."   
+  echo "  -s, --setting <SETTING_NAME>    The name of the config value to retrieve."
   echo ""
   echo "Examples:"
   echo "  kone configure get --help"
-  echo "  kone configure get --variable VERSION_TAG"
-  echo "  kone configure get --variable PACKAGE_NAME --profile ios"
+  echo "  kone configure get --setting VERSION_TAG"
+  echo "  kone configure get --setting PACKAGE_NAME --profile ios"
   echo "" 
 }
 
@@ -31,11 +31,11 @@ do
       ;;
     get)
       ;;
-    --profile)
+    -p|--profile)
       shift
       profile="${1}"
       ;;
-    --variable)
+    -s|--setting)
       shift
       varname="$(to_upper ${1})" # all profile values are uppercase
       ;; 

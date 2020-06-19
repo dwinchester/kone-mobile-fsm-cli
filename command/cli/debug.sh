@@ -23,7 +23,7 @@ else
 fi
 
 # set the debug value in configured profile
-"${ROOT_DIR}/command/configure/set.sh" --variable DEBUG --value "${debug}"
+"${ROOT_DIR}/command/configure/set.sh" --setting DEBUG --value "${debug}"
 
 say "${yellow:-}Warning${normal:-} ${message}."
 exit 0
