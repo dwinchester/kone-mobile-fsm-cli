@@ -21,10 +21,10 @@ show_help() {
   echo ""
   echo "Log-Levels:"
   echo "  V — Verbose"
-  echo "  D — Debug (Default)"
+  echo "  D — Debug"
   echo "  I — Info"
   echo "  W — Warning"
-  echo "  E — Error"
+  echo "  E — Error (Default)"
   echo "  F — Fatal"
   echo "  S — Silent"
   echo ""
@@ -32,7 +32,7 @@ show_help() {
 
 clear=false
 device="${DEVICE_ID}"
-log_level="D"
+log_level="E"
 pkg="${PACKAGE_NAME}"
 
 while [ $# -ne 0 ]
@@ -67,5 +67,5 @@ done
 
 cd "${ANDROID_HOME}/platform-tools"
 
-./adb -s "${device}" logcat -v brief "${pkg}":"${log_level}"
+./adb -s "${device}" logcat -v threadtime "${pkg}":"${log_level}"
 exit 0
