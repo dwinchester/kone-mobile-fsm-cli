@@ -8,12 +8,12 @@ show_help() {
   echo "Usage: kone project build [options]"
   echo ""
   echo "Options:"
-  echo "  -h, --help                      Show command line help." 
-  echo "  --build-type <BUILD_TYPE>       The version of the app that you want to build."
-  echo "  --no-dependencies               Doesn't reinstall project dependencies when running the command."
-  echo "  --output <OUTPUT_DIRECTORY>     Specifies the path for the output directory."
-  echo "  --refresh-dependencies          Execute an implicit gradle dependencies refresh when running the command."
-  echo "  --stacktrace                    Show truncated stacktraces from the configured build task." 
+  echo "  -h, --help                        Show command line help." 
+  echo "  --build-type <BUILD_TYPE>         The version of the app that you want to build. Available options are 'qa' or 'production'."
+  echo "  --copy-to <COPY_TO_DIRECTORY>     Specifies the path for the output directory."
+  echo "  --no-dependencies                 Doesn't reinstall project dependencies when running the command."
+  echo "  --refresh-dependencies            Execute an implicit gradle dependencies refresh when running the command."
+  echo "  --stacktrace                      Show truncated stacktraces from the configured build task." 
   echo ""
   echo "Examples:"
   echo "  kone project build"  
@@ -23,10 +23,10 @@ show_help() {
   echo ""
 }
 
-build_type="${BUILD_TYPE}"
+build="${BUILD_TYPE}"
 no_dependencies=false
 non_dynamic_params=""
-output=""
+copy_to=""
 
 while [ $# -ne 0 ]
 do
@@ -40,15 +40,15 @@ do
       ;;
     --build-type)
       shift
-      build_type=="${1}"
-      ;;   
+      build=="${1}"
+      ;;  
+    --copy-to)
+      shift
+      copy_to="${1}"
+      ;;     
     --no-dependencies)
       no_dependencies=true
       ;;  
-    --output)
-      shift
-      output="${1}"
-      ;;
     --stacktrace)
       non_dynamic_params+=" --stacktrace"
       ;;
@@ -63,19 +63,19 @@ do
   shift
 done
 
-# # bundles the react-native dependencies for offline use
-# if [ "${no_dependencies}" != true ]; then
-#   ( exec "${ROOT_DIR}/command/dev/bundle.sh" "--reinstall" "--update-apply" )
-# fi
+# bundles the react-native dependencies for offline use
+if [ "${no_dependencies}" != true ]; then
+  ( exec "${ROOT_DIR}/command/dev/bundle.sh" "--reinstall" "--update-apply" )
+fi
 
-# gradlew_path="$(combine_paths $(get_project_path) "/android/FieldService-Android")"
-# cd "${gradlew_path}"
+gradlew_path="$(combine_paths $(get_project_path) "/android/FieldService-Android")"
+cd "${gradlew_path}"
 
-# ./gradlew clean ${build_type} ${non_dynamic_params}
+./gradlew clean assembleRelease ${non_dynamic_params}
 
-# output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/qa/release"
-# apk_path="$(combine_paths $(get_project_path) ${output_dir})"
+output_dir="android/FieldService-Android/FieldService-App/build/outputs/apk/${build}/release"
+apk_path="$(combine_paths $(get_project_path) ${output_dir})"
 
-cp -R "${apk_path}"/. "${output}"
+cp -R "${apk_path}"/. "${copy_to}"
 
 exit 0
