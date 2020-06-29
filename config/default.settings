@@ -1,0 +1,15 @@
+DEBUG=false
+ASSET_RELATIVE_PATH=/kone-mobile-fsm-android
+GITHUB_REPO=git@github.com:konecorp/kone-mobile-fsm-android.git
+LAUNCH_FILE_RELATIVE_PATH=/android/fieldservice-android/build.gradle
+APK_PATH= 
+APP_PLATFORM=android
+BRANCH_MAIN=master
+BRANCH_SUBMODULE=master 
+BUILD_TYPE=assembleRelease
+DEVICE_ID=
+PACKAGE_NAME=com.salesforce.fieldservice.app.kone
+LOGGING_FILES_PATH=auto
+INSTALL_DIR=auto
+VERBOSE=false
+VERSION_TAG=1.2.3

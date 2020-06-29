@@ -18,9 +18,8 @@ script_name=$(basename "${0}")
 invocation='say_verbose "Calling: ${FUNCNAME[0]} $*$"' # Use in functions: eval $invocation
 
 # check that the config file exists 
-CLI_CONFIG_FILE="${ROOT_DIR}/cli.settings"
-if [[ ! -f "${CLI_CONFIG_FILE}" ]]; then
-  say_err "No configruation file found. Copy "`/config/template.settings`" and adjust."
+if [[ ! -f "${ROOT_DIR}/${DEFAULT_PROFILE}" ]]; then
+  say_err "No configruation file found. Copy 'template.settings' to 'config/default.settings' and adjust."
   exit 1
 fi
 
