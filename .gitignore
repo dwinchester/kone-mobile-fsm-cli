@@ -1,3 +1,3 @@
 bin
-# config/*.settings
+config/*.settings
 log/*.log

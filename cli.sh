@@ -18,14 +18,15 @@ script_name=$(basename "${0}")
 invocation='say_verbose "Calling: ${FUNCNAME[0]} $*$"' # Use in functions: eval $invocation
 
 # check that the config file exists 
-if [[ ! -f "${ROOT_DIR}/${DEFAULT_PROFILE}" ]]; then
+profile_file=$( combine_paths ${ROOT_DIR} ${DEFAULT_PROFILE} )
+if [[ ! -f "${profile_file}" ]]; then
   say_err "No configruation file found. Copy 'template.settings' to 'config/default.settings' and adjust."
   exit 1
 fi
 
 # export configs to ensure that all settings are visible to all commands
 export $(cat "${CLI_CONFIG_FILE}" | xargs)
-export $(cat "$(combine_paths ${ROOT_DIR} ${DEFAULT_PROFILE})" | xargs)
+export $(cat "${profile_file}" | xargs)
 
 # if no arguments are passed, then show the welcome message
 if [ $# == 0 ]; then
