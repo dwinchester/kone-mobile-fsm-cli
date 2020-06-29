@@ -15,13 +15,13 @@ as a sub-command.
 ```
 kone help
 
-kone app get-project --no-dependencies
-
 kone app get-log --log-output /Users/yourusername/Desktop
 
 kone app start-device
 
 kone deploy create-release --version 1.2.3
+
+kone project get-project --no-dependencies
 ```
 
 ## Customizing the CLI
@@ -55,41 +55,6 @@ provide a bit of additional context around how it works, when you should use it 
 In addition to providing help for commands, you may also provide it for directories to explain what
 their sub-commands are intended to achieve. To do this, simply add a `-h|--help` option to the
 command file in the directory.
-
-## Setup
-
-### Getting the code
-
-The easiest way to get the CLI onto your local machine is to simply clone the repository. 
-
-```
-git clone git@github.com:konecorp/kone-mobile-fsm-cli.git
-```
-
-If, however, you are not comfortable with GIT and its various commands, you can download the CLI as a ZIP file from the GITHUB project repository.
-
-![](img/download-zip.png)
-
-Once you have downloaded the project, run the following command in your terminal; substituting the paths for your own.
-
-```
-unzip "YOUR_DOWNLOADS_FOLDER_PATH" -d "YOUR_TARGET_FOLDER_PATH"
-```
-
-### Creating an alias
-
-```
-#!/bin/sh
-
-current_dir=$(cd $(dirname ${0}) && pwd)
-path_to_file="${current_dir}/.kone.zip"
-
-# extract the zip to the desitation dir
-unzip "${path_to_file}" -d "${HOME}/"
-
-# append the alias to your .bash_profile
-echo 'alias kone=".kone/cli.sh"' >> ${HOME}/.bash_profile
-```
 
 ## Autocomplete
 Autocomplete functionality will be added soon to make navigating the command line even easier.
