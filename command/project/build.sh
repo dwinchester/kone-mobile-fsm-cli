@@ -65,7 +65,7 @@ done
 
 # bundles the react-native dependencies for offline use
 if [ "${no_dependencies}" != true ]; then
-  ( exec "${ROOT_DIR}/command/dev/bundle.sh" "--reinstall" "--update-apply" )
+  ( exec "${ROOT_DIR}/command/project/bundle.sh" "--reinstall" "--update-apply" )
 fi
 
 gradlew_path="$(combine_paths $(get_project_path) "/android/FieldService-Android")"
