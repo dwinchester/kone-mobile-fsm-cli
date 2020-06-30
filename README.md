@@ -56,6 +56,12 @@ In addition to providing help for commands, you may also provide it for director
 their sub-commands are intended to achieve. To do this, simply add a `-h|--help` option to the
 command file in the directory.
 
+## Updating the CLI
+
+To update the CLI, simply run the command `kone cli update`. More precisely, the
+update command runs a git pull with the given parameters to merge the retrieved branch heads 
+into the current version of the CLI.
+
 ## Autocomplete
 Autocomplete functionality will be added soon to make navigating the command line even easier.
 
