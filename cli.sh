@@ -39,7 +39,7 @@ if [ $# == 0 ]; then
   echo "Current profile: ${DEFAULT_PROFILE}"
   echo ""
   echo "Use 'kone help' to see available options and commands or visit the project wiki."
-  echo "Report issues and find source on GitHub: https://github.com/konecorp/kone-mobile-fsm-cli"
+  echo "Report issues and find source on GitHub: https://github.com/dwinchester/kone-mobile-fsm-cli"
   echo ""
   exit 3
 fi
