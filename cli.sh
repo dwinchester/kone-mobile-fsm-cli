@@ -12,21 +12,23 @@ exec 3>&1
 export ROOT_DIR=$(cd $(dirname ${0}) && pwd)
 script_name=$(basename "${0}")
 
+# shellcheck external sources
 . "${ROOT_DIR}/sysfetch.sh"
-. "${ROOT_DIR}/utils.sh" # shellcheck source
+. "${ROOT_DIR}/utils.sh"
 
 invocation='say_verbose "Calling: ${FUNCNAME[0]} $*$"' # Use in functions: eval $invocation
 
-# check that the config file exists 
-profile_file=$( combine_paths ${ROOT_DIR} ${DEFAULT_PROFILE} )
-if [[ ! -f "${profile_file}" ]]; then
-  say_err "No configruation file found. Copy 'template.settings' to 'config/default.settings' and adjust."
+# export configs to ensure that all settings are visible to all commands
+CLI_CONFIG_FILE=$( combine_paths "${ROOT_DIR}" "/cli.settings" )
+export $(cat "${CLI_CONFIG_FILE}" | xargs)
+
+# check that the default profile exists 
+profile=$( combine_paths "${ROOT_DIR}" "${DEFAULT_PROFILE}" )
+if [[ ! -f "${profile}" ]]; then
+  say_err "No configruation profile found. Copy "`/template.settings`" to "`${profile}`" and adjust."
   exit 1
 fi
-
-# export configs to ensure that all settings are visible to all commands
-export $(cat "${CLI_CONFIG_FILE}" | xargs)
-export $(cat "${profile_file}" | xargs)
+export $(cat "${profile}" | xargs)
 
 # if no arguments are passed, then show the welcome message
 if [ $# == 0 ]; then
