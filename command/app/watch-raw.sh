@@ -67,5 +67,6 @@ done
 
 cd "${ANDROID_HOME}/platform-tools"
 
-./adb -s "${device}" logcat -v threadtime "${pkg}":"${log_level}"
+# ./adb -s "${device}" logcat -v threadtime "${pkg}":"${log_level}"
+./adb -s "${device}" logcat -v threadtime | grep -e "${pkg}"
 exit 0
