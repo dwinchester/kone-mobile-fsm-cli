@@ -30,7 +30,6 @@ show_help() {
   echo ""
 }
 
-clear=false
 device="${DEVICE_ID}"
 log_level="E"
 pkg="${PACKAGE_NAME}"
@@ -67,6 +66,5 @@ done
 
 cd "${ANDROID_HOME}/platform-tools"
 
-# ./adb -s "${device}" logcat -v threadtime "${pkg}":"${log_level}"
-./adb -s "${device}" logcat -v threadtime | grep -e "${pkg}"
+./adb -s "${device}" logcat -v brief "${pkg}":"${log_level}"
 exit 0

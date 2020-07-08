@@ -11,6 +11,7 @@ show_help() {
   echo "  -h, --help                      Show command line help." 
   echo "  --device <DEVICE_ID>            The ID of the connected device."
   echo "  --file-name <FILE_NAME>         The name of the file that logs are written to."
+  echo "  --format <FORMAT>               The format options for the command. Default is threadtime."
   echo "  --path <LOGS_PATH>              The directory that log files are written to. The default is the configured logs path."
   echo "  --remove-old                    Removes all old log files before a new log file is created."
   echo ""
@@ -21,14 +22,23 @@ show_help() {
   echo "  kone app get-log --path /Users/lwinchester/Desktop/Logs"
   echo "  kone app get-log --file-name whatever.log --path /Users/lwinchester/Desktop/Logs"
   echo ""
+  echo "Format-options:"
+  echo "  brief - Display priority, tag, and PID of the process issuing the message."
+  echo "  long - Display all metadata fields and separate messages with blank lines."
+  echo "  process - Display PID only."
+  echo "  raw - Display the raw log message with no other metadata fields."
+  echo "  tag - Display the priority and tag only."
+  echo "  thread - A legacy format that shows priority, PID, and TID of the thread issuing the message."
+  echo "  threadtime - Display the date, invocation time, priority, tag, PID, and TID of the thread issuing the message."
+  echo "  time - Display the date, invocation time, priority, tag, and PID of the process issuing the message."
+  echo ""
 }
 
-clear=false
 device="${DEVICE_ID}"
-remove_logs=false
-log_level="E"
+format="threadtime"
 logs_path="${LOGGING_FILES_PATH}"
 pkg="${PACKAGE_NAME}"
+remove_logs=false
 
 # the name of the file that logs are written to; e.g. android-debug-202005191027.log
 now="$( date +"%Y%m%d%I%M" )"
@@ -51,6 +61,10 @@ do
     --file-name)
       shift
       file_name="${1}"
+      ;;
+    --format)
+      shift
+      format="${1}"
       ;;
     --remove-old)
       remove_logs=true
@@ -90,5 +104,5 @@ log_file_path="$( combine_paths ${logs_path} ${file_name} )"
 
 cd "${ANDROID_HOME}/platform-tools"
 
-./adb -s "${device}" logcat -v brief | grep -e "${pkg}" > "${log_file_path}"
+./adb -s "${device}" logcat -v ${format} | grep -e "${pkg}" > "${log_file_path}"
 exit 0
