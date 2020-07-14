@@ -79,7 +79,7 @@ do
   read -p "Do you wish to apply updates? [Y]y [N]n: " yn
   case $yn in
     [Yy]* ) 
-      "${ROOT_DIR}/command/app/update-project.sh"
+      "${ROOT_DIR}/command/project/update-project.sh"
       break
       ;;
     [Nn]* ) 
