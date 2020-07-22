@@ -24,7 +24,6 @@ show_help() {
 }
 
 tag="${VERSION_TAG}"
-description="Created release ${tag}"
 project_path="$(get_project_path)"
 
 while [ $# -ne 0 ]
@@ -66,6 +65,7 @@ done
 
 # set the release branch name
 branch="release/${tag}"
+description="Created release ${tag}"
 
 # create the release branches from the `development` branch:
 
