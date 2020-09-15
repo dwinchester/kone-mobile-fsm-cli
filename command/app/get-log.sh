@@ -14,6 +14,7 @@ show_help() {
   echo "  --format <FORMAT>               The format options for the command. Default is threadtime."
   echo "  --path <LOGS_PATH>              The directory that log files are written to. The default is the configured logs path."
   echo "  --remove-old                    Removes all old log files before a new log file is created."
+  echo "  --all-logs                      Prints out all logcat logs."
   echo ""
   echo "Examples:"
   echo "  kone app get-log" 
@@ -39,6 +40,7 @@ format="threadtime"
 logs_path="${LOGGING_FILES_PATH}"
 pkg="${PACKAGE_NAME}"
 remove_logs=false
+no_pkg=false
 
 # the name of the file that logs are written to; e.g. android-debug-202005191027.log
 now="$( date +"%Y%m%d%I%M" )"
@@ -77,6 +79,9 @@ do
       shift
       logs_path="${1}"
       ;;
+    --all-logs)
+      no_pkg=true
+      ;;
     *)
       say_err "$(unknown_command_message "${key}")"
       exit 3
@@ -100,9 +105,18 @@ if [ "${remove_logs}" = true ]; then
   rm -rfv "${logs_path}"/*
 fi
 
+
 log_file_path="$( combine_paths ${logs_path} ${file_name} )"
 
 cd "${ANDROID_HOME}/platform-tools"
+
+# skip PACKAGE_NAME
+if [ "${no_pkg}" = true ]; then
+  say "Using full logcat"
+
+  ./adb -s "${device}" logcat -v ${format} -d  > "${log_file_path}"  
+  exit 0
+fi
 
 ./adb -s "${device}" logcat -v ${format} | grep -e "${pkg}" > "${log_file_path}"
 exit 0
