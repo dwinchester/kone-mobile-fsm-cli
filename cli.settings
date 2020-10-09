@@ -1,2 +1,2 @@
-DEFAULT_PROFILE=config/default.settings
+DEFAULT_PROFILE=/config/default.settings
 CLI_VERSION=1.1.0
