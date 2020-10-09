@@ -108,12 +108,8 @@ get_kernel() {
   return 0
 }
 
-
 print_sysinfo() {
   echo "Runtime Environment:"
   echo "  Hostname: $( get_title )"
   echo "  Kernel: $( cache_uname )"
-  echo ""
-  echo ""
-  echo ""
 }
