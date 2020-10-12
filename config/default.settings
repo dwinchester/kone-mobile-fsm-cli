@@ -1,4 +1,4 @@
-DEBUG=false
+DEBUG=true
 ASSET_RELATIVE_PATH=/kone-mobile-fsm-android
 GITHUB_REPO=git@github.com:konecorp/kone-mobile-fsm-android.git
 LAUNCH_FILE_RELATIVE_PATH=/android/fieldservice-android/build.gradle
@@ -8,8 +8,8 @@ BRANCH_MAIN=development
 BRANCH_SUBMODULE=development 
 BUILD_TYPE=production
 DEVICE_ID=emulator-5554
-PACKAGE_NAME=com.salesforce.fieldservice.app.kone
+PACKAGE_NAME=com.salesforce.fieldservice.app.kone.qa
 LOGGING_FILES_PATH=/Users/lwinchester/Desktop/Logs
 INSTALL_DIR=/Users/lwinchester/Desktop/Projects/sfdc/konecorp
-VERBOSE=false
-VERSION_TAG=8.9.0
+VERBOSE=true
+VERSION_TAG=8.12.0

@@ -12,7 +12,7 @@ exec 3>&1
 export ROOT_DIR=$(cd $(dirname ${0}) && pwd)
 
 # shellcheck external sources
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 # run the CLI entrypoint
 cli_entrypoint "$@"

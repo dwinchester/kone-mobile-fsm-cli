@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 project_path="$(get_project_path)"
 cd "${project_path}"

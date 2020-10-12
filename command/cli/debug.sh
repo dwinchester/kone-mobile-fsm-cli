@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 help_arg=2
 if [ "${!help_arg}" == "help" ]; then

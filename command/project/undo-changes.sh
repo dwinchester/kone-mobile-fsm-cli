@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 undo() {
   git reset --hard # undo all staged changes

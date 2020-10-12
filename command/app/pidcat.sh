@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 show_help() {
   echo ""
@@ -43,5 +43,5 @@ done
 
 cd "${ANDROID_HOME}/platform-tools"
 
-${ROOT_DIR}/coloredlogcat.py "-s ${device}"
+${ROOT_DIR}/command/app/coloredlogcat.py "-s ${device}"
 exit 0

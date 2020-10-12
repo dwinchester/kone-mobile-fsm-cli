@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 cd "${ROOT_DIR}"
 

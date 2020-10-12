@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/sysfetch.sh"
+. "${ROOT_DIR}/utils/sysfetch.sh"
 
 print_sysinfo() {
   # get the latest commit hash for the CLI

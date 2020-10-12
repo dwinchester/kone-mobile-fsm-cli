@@ -3,7 +3,7 @@
 ROOT_DIR=$(cd $(dirname ${0}) && pwd)
 CLI_ENTRYPOINT=$(basename "${1}")
 
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 # locate the correct level to display the help file for, either a directory
 # with no further arguments, or a command file

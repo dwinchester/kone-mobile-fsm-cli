@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. "${ROOT_DIR}/colors_formatting.sh"
+. "${ROOT_DIR}/utils/colors_formatting.sh"
 
 echo ""
 echo "${TEXT_BOLD}VERSION:${TEXT_NORMAL} ${COLOR_LIGHT_GRAY}${CLI_VERSION}${COLOR_NORMAL}"

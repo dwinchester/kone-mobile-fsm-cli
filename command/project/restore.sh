@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 # delete all the existing artifacts and metadata Gradle has previously downloaded
 rm -rf "${HOME}"/.gradle/caches/

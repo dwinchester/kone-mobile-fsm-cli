@@ -3,7 +3,7 @@
 # note: ensure that you are on the release branch that requires deployment
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 project_path="$( get_project_path )"
 cd "${project_path}"

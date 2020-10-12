@@ -4,7 +4,7 @@
 # and prompt the user to start one
 
 set -e
-. "${ROOT_DIR}/utils.sh"
+. "${ROOT_DIR}/utils/utils.sh"
 
 # go to the emulator directory
 cd "${ANDROID_HOME}/emulator"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-. "${ROOT_DIR}/colors_formatting.sh"
-. "${ROOT_DIR}/sysfetch.sh"
+. "${ROOT_DIR}/utils/colors_formatting.sh"
+. "${ROOT_DIR}/utils/sysfetch.sh"
 
 invocation='say_verbose "Calling: ${FUNCNAME[0]} $*$"' # Use in functions: eval $invocation
 
@@ -140,12 +140,21 @@ cli_entrypoint() {
   exit $EXIT_CODE
 }
 
+function cli_resolve_path() {
+    perl -e 'use Cwd "abs_path"; print abs_path(shift)' "$1"
+}
+
+# cli_auto_completion() {
+#   local root_dir=$(dirname "$( cli_resolve_path "$( which "${COMP_WORDS[0]}" )" )" )
+#   local current_arg="${COMP_WORDS[COMP_CWORD]}"  
+# }
+
 say_warning() {
-  printf "%b\n" "${yellow:-}kone_cli: Warning: ${1}${normal:-}"
+  printf "%b\n" "${COLOR_YELLOW:-}kone_cli: Warning: ${1}${COLOR_NORMAL:-}"
 }
 
 say_err() {
-  printf "%b\n" "${red:-}kone_cli: Error: ${1}${normal:-}" >&2
+  printf "%b\n" "${COLOR_RED:-}kone_cli: Error: ${1}${COLOR_NORMAL:-}" >&2
 }
 
 say() {
@@ -160,7 +169,7 @@ say_verbose() {
   fi
 }
 
-debug() {
+debugger() {
   if [ "${DEBUG}" = true ]; then
     local now="$(date +"%Y%m%d%I%M")"
     local log="${ROOT_DIR}/log/cli-debug-${now}.log" # output: cli-debug-202004240958.log
