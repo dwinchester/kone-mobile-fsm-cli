@@ -150,17 +150,17 @@ function cli_resolve_path() {
 # }
 
 say_warning() {
-  printf "%b\n" "${COLOR_YELLOW:-}kone_cli: Warning: ${1}${COLOR_NORMAL:-}"
+  printf "%b\n" "${BACKGROUND_YELLOW}kone_cli: Warning:${BACKGROUND_NORMAL} ${1}"
 }
 
 say_err() {
-  printf "%b\n" "${COLOR_RED:-}kone_cli: Error: ${1}${COLOR_NORMAL:-}" >&2
+  printf "%b\n" "${BACKGROUND_RED}kone_cli: Error:${BACKGROUND_NORMAL} ${COLOR_RED}${1}${COLOR_NORMAL}" >&2
 }
 
 say() {
   # using stream 3 (defined in the beginning) to not interfere with stdout of functions
   # which may be used as return value
-  printf "%b\n" "${cyan:-}kone_cli:${normal:-} ${1}" >&3
+  printf "%b\n" "${BACKGROUND_CYAN}kone_cli:${BACKGROUND_NORMAL} ${1}" >&3
 }
 
 say_verbose() {
