@@ -1,2 +1,3 @@
 DEFAULT_PROFILE=/config/default.settings
 CLI_VERSION=1.1.0
+COLOR_THEME=/theme/dracula/theme.sh

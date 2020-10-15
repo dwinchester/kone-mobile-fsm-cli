@@ -263,6 +263,18 @@ combine_paths() {
   return 0
 }
 
+get_theme() {
+  eval $invocation
+
+  cli_theme=$( combine_paths "${ROOT_DIR}" "${COLOR_THEME}" )
+  if [[ ! -f "${cli_theme}" ]]; then
+    say_err "No theme found: ${cli_theme}"
+    exit 1
+  fi
+  echo "${cli_theme}"
+  return 0
+}
+
 resolve_installation_path() {
   eval $invocation
 
