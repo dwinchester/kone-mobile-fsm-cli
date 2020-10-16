@@ -96,5 +96,5 @@ cd "${ANDROID_HOME}/platform-tools"
 
 # start the app package with the activity defined in the manifest
 start_app
-say "${green:-}Success${normal:-} App started."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} App started."
 exit 0

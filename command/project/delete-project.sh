@@ -6,5 +6,5 @@ set -e
 # remove the project and all its contents
 rm -rf "$(get_project_path)"
 
-say "${green:-}Success${normal:-} Project has been deleted."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Project has been deleted."
 exit 0

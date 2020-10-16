@@ -10,5 +10,5 @@ say "Checking for updates."
 # get all changes from the remote repository
 git pull >/dev/null
 
-say "${green:-}Success${normal:-} CLI up to date."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} CLI up to date."
 exit 0

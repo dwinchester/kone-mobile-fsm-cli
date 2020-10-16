@@ -33,5 +33,5 @@ cd "android/React"
 git checkout development
 git branch -D "release/${tag}"
 
-say "${green:-}Success${normal:-} New tag created.\nPlease see: ${blue:-}https://dev.azure.com/konecorp/kone-mobile-fsm-android/_build${normal:-}"
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} New tag created.\nPlease see: ${blue:-}https://dev.azure.com/konecorp/kone-mobile-fsm-android/_build${normal:-}"
 exit 0

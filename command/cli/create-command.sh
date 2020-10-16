@@ -2,27 +2,32 @@
 
 set -e
 . "${ROOT_DIR}/utils/utils.sh"
+get_theme
 
 show_help() {
   echo ""
-  echo "Usage: kone cli create-command [options]"
+  echo "${COLOR_YELLOW}Create a new CLI command.${COLOR_NORMAL}"
   echo ""
-  echo "Options:"
-  echo "  -h, --help              Show command line help."
-  echo "  -c, --command-name      The name of the new command."
-  echo "  -o, --option            The name of the new command-option."
+  echo "${COLOR_DARK_GRAY}VERSION:${COLOR_NORMAL} ${BACKGROUND_BLUE}${CLI_VERSION}${BACKGROUND_NORMAL}"
   echo ""
-  echo "Examples:"
-  echo "  kone cli create-command --help"
-  echo "  kone cli create-command --command-name hello --option world"
+  echo "${COLOR_DARK_GRAY}USAGE:${COLOR_NORMAL}" 
+  echo "${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}create-command${COLOR_NORMAL} ${COLOR_MAGENTA}[arguments]${COLOR_NORMAL}"       
   echo ""
-  echo "Results:"
-  echo "  Creates a new command with command-option: 'kone hello world'"
-  echo ""   
+  echo "${COLOR_DARK_GRAY}ARGUMENTS${COLOR_NORMAL}               ${COLOR_DARK_GRAY}DESCRIPTION:${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-h, --help${COLOR_NORMAL}              ${COLOR_LIGHT_GRAY}Show command line help.${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-c, --command-name${COLOR_NORMAL}      ${COLOR_LIGHT_GRAY}The name of the new command.${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-o, --option${COLOR_NORMAL}            ${COLOR_LIGHT_GRAY}The name of the new command-option.${COLOR_NORMAL}"
+  echo ""
+  echo "${COLOR_DARK_GRAY}EXAMPLES:${COLOR_NORMAL}" 
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}create-command${COLOR_NORMAL} ${COLOR_MAGENTA}-c do --o work${COLOR_NORMAL}"
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}create-command${COLOR_NORMAL} ${COLOR_MAGENTA}--command-name hello --option world${COLOR_NORMAL}"
+  echo ""
 }
 
+# we do this to prevent the command from create an empty .sh file when no 
+# command name is passed to the terminal
 if [ $# == 1 ]; then
-  show_help # no other options where passed
+  show_help # no other options where passed, so show help
   exit 3
 fi
 
@@ -71,5 +76,5 @@ say "TODO: The arguments you wish to provide to this command" > "${cmd_dir}/${co
 
 chmod -R 775 "${HOME}/.kone/" # update execute permissions
 
-say "${green:-}Success${normal:-} New command created."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} New command created."
 exit 0

@@ -57,7 +57,7 @@ exists=$( ./adb -s "${device}" shell pm list packages -3 | grep ${pkg} )
 if [ "${exists}" = "package:${pkg}" ]; then
   # remove the package from the device
   ./adb -s "${device}" uninstall "${pkg}" >/dev/null
-  say "${green:-}Success${normal:-} App uninstalled from ${device}."
+  say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} App uninstalled from ${device}."
   exit 0
 fi
 

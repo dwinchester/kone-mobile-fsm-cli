@@ -84,5 +84,5 @@ if [ "${set_default}" = true ]; then
   set_config "default_profile" "config\/${profile}.settings" "${ROOT_DIR}/cli.settings"
 fi
 
-say "${green:-}Success${normal:-} New profile created."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} New profile created."
 exit 0

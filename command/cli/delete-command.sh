@@ -52,5 +52,5 @@ fi
 # remove the directory and all its contents
 rm -rf "${cmd_dir}"
 
-say "${green:-}Success${normal:-} Command has been deleted."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Command has been deleted."
 exit 0

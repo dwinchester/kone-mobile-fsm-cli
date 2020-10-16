@@ -85,5 +85,5 @@ git add .
 git commit -m "${description}"
 git push --set-upstream origin "${branch}"
 
-say "${green:-}Success${normal:-} New release created.\nWhen you are ready, run: ${yellow:-}kone deploy tag-release${normal:-}"
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} New release created.\nWhen you are ready, run: ${yellow:-}kone deploy tag-release${normal:-}"
 exit 0

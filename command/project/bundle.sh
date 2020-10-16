@@ -73,5 +73,5 @@ react-native bundle \
     --bundle-output ../FieldService-Android/FieldService-App/src/main/assets/kone.android.bundle \
     --assets-dest ../FieldService-Android/FieldService-App/src/main/res/
 
-say "${green:-}Success${normal:-} Bundle update completed."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Bundle update completed."
 exit 0

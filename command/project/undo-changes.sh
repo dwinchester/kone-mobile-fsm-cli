@@ -20,5 +20,5 @@ cd "${project_path}"
 undo
 cd "android/React" && undo
 
-say "${green:-}Success${normal:-} All changes reverted."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} All changes reverted."
 exit 0

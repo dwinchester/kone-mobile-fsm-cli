@@ -83,7 +83,7 @@ do
       break
       ;;
     [Nn]* ) 
-      say "${green:-}Success${normal:-} Done.\nTo apply updates, run: '${yellow:-}kone app update-project${normal:-}'"
+      say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Done.\nTo apply updates, run: '${yellow:-}kone app update-project${normal:-}'"
       exit 0
       ;;
     * ) 

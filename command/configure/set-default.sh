@@ -51,5 +51,5 @@ done
 
 set_config "default_profile" "config\/${profile}.settings" "${ROOT_DIR}/cli.settings"
 
-say "${green:-}Success${normal:-} Profile ${profile} set to default."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Profile ${profile} set to default."
 exit 0

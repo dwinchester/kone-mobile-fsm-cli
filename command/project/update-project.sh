@@ -18,5 +18,5 @@ cd "android/React" # update the submodule
 git checkout "${BRANCH_SUBMODULE}"
 git pull
 
-say "${green:-}Success${normal:-} Project update completed."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} ${COLOR_GREEN}Project update completed.${COLOR_NORMAL}"
 exit 0

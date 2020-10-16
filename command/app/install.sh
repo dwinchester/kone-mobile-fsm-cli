@@ -91,5 +91,5 @@ say "Performing install. Please wait."
 # if the APK is built using a developer preview SDK, you must include the 
 # -t option with the install command to install a test APK
 ./adb -s "${device}" install ${non_dynamic_params} "${apk_path}" >/dev/null
-say "${green:-}Success${normal:-} App installed on ${device}."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} App installed on ${device}."
 exit 0

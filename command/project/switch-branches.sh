@@ -67,5 +67,5 @@ git checkout ${non_dynamic_parameters} "${main_branch}"
 cd "android/React"
 git checkout ${non_dynamic_parameters} "${submodule_branch}"
 
-say "${green:-}Success${normal:-} Branches updated."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Branches updated."
 exit 0
