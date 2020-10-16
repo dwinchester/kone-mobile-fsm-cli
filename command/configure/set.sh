@@ -68,5 +68,5 @@ if [ -z "${varname}" ] || [ -z "${value}" ]; then
 fi
 
 set_config "${varname}" "${value}" "${config_file}"
-say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} Saved settings file."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} ${COLOR_GREEN}Saved settings file.${COLOR_NORMAL}"
 exit 0
