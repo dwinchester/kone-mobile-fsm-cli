@@ -64,7 +64,7 @@ cmd_dir="${cmd_dir}/${command_name}"
 
 if [[ ! -d "${cmd_dir}" ]]; then
   mkdir "${cmd_dir}"
-  say "TODO: Fill out the help information for this command" > "${cmd_dir}/help.sh" # create help file
+  say "${BACKGROUND_CYAN}TODO:${BACKGROUND_NORMAL} Fill out the help information for this command." > "${cmd_dir}/help.sh" # create help file
 fi
 
 # create command-option file
@@ -72,9 +72,9 @@ if [[ -f "${cmd_dir}/${command_option}.sh" ]]; then
   say_err "That command already exists. Exiting with code 1."
   exit 1
 fi
-say "TODO: The arguments you wish to provide to this command" > "${cmd_dir}/${command_option}.sh"
+say "${BACKGROUND_CYAN}TODO:${BACKGROUND_NORMAL} The arguments you wish to provide to this command." > "${cmd_dir}/${command_option}.sh"
 
 chmod -R 775 "${HOME}/.kone/" # update execute permissions
 
-say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} New command created."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} ${COLOR_GREEN}Command '${command_name}' created.${COLOR_NORMAL}"
 exit 0
