@@ -13,14 +13,6 @@ print_sysinfo() {
   echo "Version: ${CLI_VERSION}"
   echo "Commit: ${commit}"
   echo ""
-  echo "${COLOR_DARK_GRAY}SETTINGS:${COLOR_NORMAL}"
-  echo "Project Path: $( get_project_path )"
-  echo "Primary branch: ${BRANCH_MAIN}"
-  echo "Submodule branch: ${BRANCH_SUBMODULE}"
-  echo "Version Tag: ${VERSION_TAG}"
-  echo "Device ID: ${DEVICE_ID}"
-  echo "Logging Files Path: ${LOGGING_FILES_PATH}"
-  echo ""
   exit 3
 }
 

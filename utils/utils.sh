@@ -77,16 +77,19 @@ cli_profile() {
 cli_entrypoint() {
   cli_profile
 
-  # if no arguments are passed, then show the welcome message
-  if [ $# == 0 ]; then
-    show_cli_welcome
-  fi
-
   # locate the correct command to execute by looking through the commands directory
   # for folders and files and match the arguments
   arg_start=1
   cmd_name="${!arg_start}"
   cmd_file="${ROOT_DIR}/command/${cmd_name}"
+
+    # if no arguments are passed, then show the welcome message
+  if [ $# == 0 ]; then
+    show_cli_welcome
+  elif [ ${cmd_name} == "-v" ] || [ ${cmd_name} == "--version" ]; then # version shortcut
+    source $( combine_paths ${ROOT_DIR} "/command/cli/version.sh" )
+    exit 3
+  fi
 
   while [[ -d "${cmd_file}" && $arg_start -le $# ]]; do
     # if the user provides help as the last argument, then display help

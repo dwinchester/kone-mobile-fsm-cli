@@ -12,4 +12,4 @@ PACKAGE_NAME=com.salesforce.fieldservice.app.kone.qa
 LOGGING_FILES_PATH=/Users/lwinchester/Desktop/Logs
 INSTALL_DIR=/Users/lwinchester/Desktop/Projects/sfdc/konecorp
 VERBOSE=true
-VERSION_TAG=8.12.0
+VERSION_TAG=8.13.1
