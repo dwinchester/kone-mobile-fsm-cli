@@ -36,7 +36,7 @@ do
       ;;
     delete-command)
       ;;
-    -c|--command-name)
+    -n|--name)
       shift
       command_name="${1}"
       ;;
