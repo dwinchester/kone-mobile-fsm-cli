@@ -14,11 +14,10 @@ show_help() {
   echo ""
   echo "${COLOR_DARK_GRAY}ARGUMENTS${COLOR_NORMAL}               ${COLOR_DARK_GRAY}DESCRIPTION:${COLOR_NORMAL}"
   echo "${COLOR_MAGENTA}-h, --help${COLOR_NORMAL}              ${COLOR_LIGHT_GRAY}Show command line help.${COLOR_NORMAL}"
-  echo "${COLOR_MAGENTA}-c, --command-name${COLOR_NORMAL}      ${COLOR_LIGHT_GRAY}The name of the new command.${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-n, --name${COLOR_NORMAL}              ${COLOR_LIGHT_GRAY}The name of the command to delete.${COLOR_NORMAL}"
   echo ""
   echo "${COLOR_DARK_GRAY}EXAMPLES:${COLOR_NORMAL}" 
-  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}delete-command${COLOR_NORMAL} ${COLOR_MAGENTA}-c hello${COLOR_NORMAL}"
-  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}delete-command${COLOR_NORMAL} ${COLOR_MAGENTA}--command-name hello${COLOR_NORMAL}"
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}delete-command${COLOR_NORMAL} ${COLOR_MAGENTA}--name hello${COLOR_NORMAL}"
   echo ""  
 }
 
