@@ -5,18 +5,23 @@ set -e
 
 show_help() {
   echo ""
-  echo "Usage: kone configure get [options]"
+  echo "${COLOR_YELLOW}Get a configuration value from the config file.${COLOR_NORMAL}"
   echo ""
-  echo "Options:"
-  echo "  -h, --help                      Show command line help."  
-  echo "  -p, --profile <PROFILE>         Specifies the named profile to use for this command."   
-  echo "  -s, --setting <SETTING_NAME>    The name of the config value to retrieve."
+  echo "${COLOR_DARK_GRAY}VERSION:${COLOR_NORMAL} ${BACKGROUND_BLUE}${CLI_VERSION}${BACKGROUND_NORMAL}"
   echo ""
-  echo "Examples:"
-  echo "  kone configure get --help"
-  echo "  kone configure get --setting VERSION_TAG"
-  echo "  kone configure get --setting PACKAGE_NAME --profile ios"
-  echo "" 
+  echo "${COLOR_DARK_GRAY}USAGE:${COLOR_NORMAL}" 
+  echo "${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}get${COLOR_NORMAL} ${COLOR_MAGENTA}[arguments]${COLOR_NORMAL}"       
+  echo ""
+  echo "${COLOR_DARK_GRAY}ARGUMENTS${COLOR_NORMAL}                    ${COLOR_DARK_GRAY}DESCRIPTION:${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-h, --help${COLOR_NORMAL}                   ${COLOR_LIGHT_GRAY}Show command line help.${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-p, --profile <PROFILE>${COLOR_NORMAL}      ${COLOR_LIGHT_GRAY}Specifies the named profile to use for this command.${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-v, --varname <VARNAME>${COLOR_NORMAL}      ${COLOR_LIGHT_GRAY}The name of the config value to retrieve.${COLOR_NORMAL}"
+
+  echo ""
+  echo "${COLOR_DARK_GRAY}EXAMPLES:${COLOR_NORMAL}" 
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}get${COLOR_NORMAL} ${COLOR_MAGENTA}--varname apk_path${COLOR_NORMAL}"
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}get${COLOR_NORMAL} ${COLOR_MAGENTA}--varname version_tag --profile release${COLOR_NORMAL}"
+  echo ""
 }
 
 profile="default"
@@ -35,9 +40,9 @@ do
       shift
       profile="${1}"
       ;;
-    -s|--setting)
+    -v|--varname)
       shift
-      varname="$(to_upper ${1})" # all profile values are uppercase
+      varname="$( to_upper ${1} )" # all profile values are uppercase
       ;; 
     *)
       say_err "$(unknown_command_message "${key}")"
@@ -51,7 +56,7 @@ config_file="${ROOT_DIR}/config/${profile}.settings"
 
 if [ ! -f "${config_file}" ]; then
   say_warning "Profile '${profile}' not found."
-  say "Using default profile: ${blue:-}\`${DEFAULT_PROFILE}\`${normal:-}"
+  say "Using default profile: ${BACKGROUND_BLUE}\`${DEFAULT_PROFILE}\`${BACKGROUND_NORMAL}"
 
   config_file="${ROOT_DIR}/${DEFAULT_PROFILE}"
 fi
@@ -63,5 +68,5 @@ fi
 
 source "${config_file}"
 
-say "${!varname}"
+say "${varname}: ${!varname}"
 exit 0
