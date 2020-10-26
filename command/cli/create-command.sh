@@ -6,7 +6,7 @@ get_theme
 
 show_help() {
   echo ""
-  echo "${COLOR_YELLOW}Create a new CLI command.${COLOR_NORMAL}"
+  echo "${COLOR_YELLOW}Creates a new CLI command.${COLOR_NORMAL}"
   echo ""
   echo "${COLOR_DARK_GRAY}VERSION:${COLOR_NORMAL} ${BACKGROUND_BLUE}${CLI_VERSION}${BACKGROUND_NORMAL}"
   echo ""
@@ -15,12 +15,11 @@ show_help() {
   echo ""
   echo "${COLOR_DARK_GRAY}ARGUMENTS${COLOR_NORMAL}               ${COLOR_DARK_GRAY}DESCRIPTION:${COLOR_NORMAL}"
   echo "${COLOR_MAGENTA}-h, --help${COLOR_NORMAL}              ${COLOR_LIGHT_GRAY}Show command line help.${COLOR_NORMAL}"
-  echo "${COLOR_MAGENTA}-c, --command-name${COLOR_NORMAL}      ${COLOR_LIGHT_GRAY}The name of the new command.${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-n, --name${COLOR_NORMAL}              ${COLOR_LIGHT_GRAY}The name of the new command.${COLOR_NORMAL}"
   echo "${COLOR_MAGENTA}-o, --option${COLOR_NORMAL}            ${COLOR_LIGHT_GRAY}The name of the new command-option.${COLOR_NORMAL}"
   echo ""
   echo "${COLOR_DARK_GRAY}EXAMPLES:${COLOR_NORMAL}" 
-  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}create-command${COLOR_NORMAL} ${COLOR_MAGENTA}-c do --o work${COLOR_NORMAL}"
-  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}create-command${COLOR_NORMAL} ${COLOR_MAGENTA}--command-name hello --option world${COLOR_NORMAL}"
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}cli${COLOR_NORMAL} ${COLOR_CYAN}create-command${COLOR_NORMAL} ${COLOR_MAGENTA}-n hello --o world${COLOR_NORMAL}"
   echo ""
 }
 
@@ -41,7 +40,7 @@ do
       ;;
     create-command)
       ;;
-    -c|--command-name)
+    -n|--name)
       shift
       command_name="${1}"
       ;;
