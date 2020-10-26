@@ -3,10 +3,31 @@
 set -e
 . "${ROOT_DIR}/utils/utils.sh"
 
-dir="${ROOT_DIR}/config"
+config_dir="${ROOT_DIR}/config"
 
-echo "List of profiles"
+is_default() {
+  file_name=${1}
+
+  # determines whether the specified file name matches the currently
+  # configured default for the cli
+  if [[ "${DEFAULT_PROFILE}" == *"${file_name}"* ]]; then
+    echo "DEFAULT"
+  fi
+}
 
 # show only files with the .settings file extension
-cd "${dir}" && ls -1 *.settings
+cd "${config_dir}"
+
+echo ""
+echo "Location"
+echo "--------"
+
+N=1
+for file in *.settings; do
+  echo "~/.kone/config/${file} ${BACKGROUND_YELLOW}$( is_default ${file} )${BACKGROUND_NORMAL}"
+  let N=$N+1
+done
+
+echo "" # spacing
+
 exit 0
