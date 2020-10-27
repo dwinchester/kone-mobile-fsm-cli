@@ -14,9 +14,8 @@ show_help() {
   echo ""
   echo "${COLOR_DARK_GRAY}ARGUMENTS${COLOR_NORMAL}                          ${COLOR_DARK_GRAY}DESCRIPTION:${COLOR_NORMAL}"
   echo "${COLOR_MAGENTA}-h, --help${COLOR_NORMAL}                         ${COLOR_LIGHT_GRAY}Show command line help.${COLOR_NORMAL}"    
-  echo "${COLOR_MAGENTA}-d, --default${COLOR_NORMAL}                      ${COLOR_LIGHT_GRAY}Sets the profile as the default for the CLI.${COLOR_NORMAL}" 
-  echo "${COLOR_MAGENTA}-p, --profile <PROFILE_NAME>${COLOR_NORMAL}       ${COLOR_LIGHT_GRAY}Specifies the named profile to create.${COLOR_NORMAL}"   
-  echo ""
+  echo "${COLOR_MAGENTA}-d, --set-default${COLOR_NORMAL}                  ${COLOR_LIGHT_GRAY}Sets the profile as the default for the CLI.${COLOR_NORMAL}" 
+  echo "${COLOR_MAGENTA}-p, --profile <PROFILE>${COLOR_NORMAL}            ${COLOR_LIGHT_GRAY}Specifies the named profile to create.${COLOR_NORMAL}"   
   echo ""
   echo "${COLOR_DARK_GRAY}EXAMPLES:${COLOR_NORMAL}" 
   echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}new${COLOR_NORMAL} ${COLOR_MAGENTA}--profile android${COLOR_NORMAL}"
@@ -63,7 +62,7 @@ do
       ;;
     new)
       ;;
-    -d|--default)
+    -d|--set-default)
       set_default=true
       ;;
     -p|--profile)
@@ -89,5 +88,5 @@ if [ "${set_default}" = true ]; then
   set_config "default_profile" "config\/${profile}.settings" "${ROOT_DIR}/cli.settings"
 fi
 
-say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} ${COLOR_GREEN}New profile created.${COLOR_NORMAL}"
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} ${COLOR_GREEN}New profile '${profile}' created.${COLOR_NORMAL}"
 exit 0
