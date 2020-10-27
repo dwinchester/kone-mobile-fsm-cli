@@ -19,12 +19,12 @@ is_default() {
 cd "${config_dir}"
 
 echo ""
-echo "Location"
-echo "--------"
+echo "#  Location"
+echo "-  --------"
 
 N=1
 for file in *.settings; do
-  echo "~/.kone/config/${file} ${BACKGROUND_YELLOW}$( is_default ${file} )${BACKGROUND_NORMAL}"
+  echo "${N})  ~/.kone/config/${file} ${BACKGROUND_YELLOW}$( is_default ${file} )${BACKGROUND_NORMAL}"
   let N=$N+1
 done
 
