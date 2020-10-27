@@ -82,6 +82,8 @@ if [ "${profile}" = "default" ]; then
   exit 1;
 fi
 
+# TODO: Check if the profile already exits and return an err.
+
 copy_profile "${ROOT_DIR}/${DEFAULT_PROFILE}" "${ROOT_DIR}/config/${profile}.settings"
 
 if [ "${set_default}" = true ]; then
