@@ -5,18 +5,23 @@ set -e
 
 show_help() {
   echo ""
-  echo "Usage: kone configure new [options] [[--] <additional arguments>]]"
+  echo "${COLOR_YELLOW}Copies the default profile template and creates a new profile.${COLOR_NORMAL}"
   echo ""
-  echo "Options:"
-  echo "  -h, --help                        Show command line help."    
-  echo "  -p, --profile <PROFILE_NAME>      Specifies the named profile to create."   
-  echo "  --set-default                     Sets the newly created profile as the default for the CLI." 
+  echo "${COLOR_DARK_GRAY}VERSION:${COLOR_NORMAL} ${BACKGROUND_BLUE}${CLI_VERSION}${BACKGROUND_NORMAL}"
   echo ""
-  echo "Examples:"
-  echo "  kone configure new --help"
-  echo "  kone configure new --profile android-sdk-9"
-  echo "  kone configure new --profile ios --set-profile"
-  echo "" 
+  echo "${COLOR_DARK_GRAY}USAGE:${COLOR_NORMAL}" 
+  echo "${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}new${COLOR_NORMAL} ${COLOR_MAGENTA}[arguments]${COLOR_NORMAL}"       
+  echo ""
+  echo "${COLOR_DARK_GRAY}ARGUMENTS${COLOR_NORMAL}                          ${COLOR_DARK_GRAY}DESCRIPTION:${COLOR_NORMAL}"
+  echo "${COLOR_MAGENTA}-h, --help${COLOR_NORMAL}                         ${COLOR_LIGHT_GRAY}Show command line help.${COLOR_NORMAL}"    
+  echo "${COLOR_MAGENTA}-d, --default${COLOR_NORMAL}                      ${COLOR_LIGHT_GRAY}Sets the profile as the default for the CLI.${COLOR_NORMAL}" 
+  echo "${COLOR_MAGENTA}-p, --profile <PROFILE_NAME>${COLOR_NORMAL}       ${COLOR_LIGHT_GRAY}Specifies the named profile to create.${COLOR_NORMAL}"   
+  echo ""
+  echo ""
+  echo "${COLOR_DARK_GRAY}EXAMPLES:${COLOR_NORMAL}" 
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}new${COLOR_NORMAL} ${COLOR_MAGENTA}--profile android${COLOR_NORMAL}"
+  echo "$ ${COLOR_GREEN}kone${COLOR_NORMAL} ${COLOR_YELLOW}configure${COLOR_NORMAL} ${COLOR_CYAN}new${COLOR_NORMAL} ${COLOR_MAGENTA}--profile android --default${COLOR_NORMAL}"
+  echo ""
 }
 
 set_config() {
@@ -58,12 +63,12 @@ do
       ;;
     new)
       ;;
+    -d|--default)
+      set_default=true
+      ;;
     -p|--profile)
       shift
       profile="${1}"
-      ;;
-    --set-default)
-      set_default=true
       ;;
     *)
       say_err "$(unknown_command_message "${key}")"
@@ -74,7 +79,7 @@ do
 done
 
 if [ "${profile}" = "default" ]; then
-  say_err "Cannot create new profile. The 'profile' option is required. Exiting with code 1."; 
+  say_err "Cannot create new profile. The '--profile' option is required. Exiting with code 1."; 
   exit 1;
 fi
 
@@ -84,5 +89,5 @@ if [ "${set_default}" = true ]; then
   set_config "default_profile" "config\/${profile}.settings" "${ROOT_DIR}/cli.settings"
 fi
 
-say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} New profile created."
+say "${BACKGROUND_GREEN}Success${BACKGROUND_NORMAL} ${COLOR_GREEN}New profile created.${COLOR_NORMAL}"
 exit 0
